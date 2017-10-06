@@ -1,0 +1,11 @@
+<div class="fullpage">
+  <div class="menu">
+  <h2 id="welmsg">Welcome {{username}}</h2>
+    <ul class="tabs">
+      <li *ngFor="let tab of tabs" (click)="onClick(tab)">
+      {{tab.name}}
+      </li>
+    </ul>
+  </div>
+  </div>
+  

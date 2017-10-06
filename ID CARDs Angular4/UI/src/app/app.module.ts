@@ -1,61 +1,53 @@
-import {BrowserModule} from '@angular/platform-browser';
-import {NgModule} from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
+import { HttpModule } from '@angular/http';
 
-import {AppComponent} from './app.component';
-import {FormsModule} from '@angular/forms';
-import {RouterModule, Routes} from '@angular/router';
-import {UserHomeComponent} from './user-home/user-home.component';
-import {SaveddetailsComponent} from './saveddetails/saveddetails.component';
-import {MyordersComponent} from './myorders/myorders.component';
-import {CustomerreceiptComponent} from './customerreceipt/customerreceipt.component';
-import {UserComponent} from './user/user.component';
-import { IdcardselectionComponent } from './idcardselection/idcardselection.component';
+import { AppComponent } from './app.component';
+import { HeaderComponent } from './header/header.component';
+import { FooterComponent } from './footer/footer.component';
+import { RegisterComponent } from './register/register.component';
+import { LoginComponent  } from './login/login.component';
+import { RouterModule, Routes } from '@angular/router';
+import { FormGroup, FormBuilder, Validators, FormControl, FormsModule } from '@angular/forms';
+import { AdminHomeComponent } from './admin-home/admin-home.component';
+import { UserHomeComponent } from './user-home/user-home.component';
+import { DeliverHomeComponent } from './deliver-home/deliver-home.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { UserService } from './user.service';
+import { AuthguardGuard } from './authguard.guard'; 
+import { RegisterService } from './register.service';
 
 
 const appRoutes: Routes = [
-  {
-    path: '',
-    component: UserComponent
-   },
-  {
-    path: 'Home',
-    component: UserHomeComponent
-  },
-  {
-    path: 'IdCardSelection',
-    component: IdcardselectionComponent
-  },
-  {
-    path: 'SavedDetails',
-    component: SaveddetailsComponent
-  },
-  {
-    path: 'MyOrders',
-    component: MyordersComponent
-  },
-  {
-    path: 'CustomerReceipt',
-    component: CustomerreceiptComponent
-  }
-]
+{ path: '', redirectTo: '/login', pathMatch: 'full'  },
+{ path: 'login',    component:        LoginComponent },
+{ path: 'register', component: RegisterComponent },
+{ path: 'adminHome',
+canActivate : [ AuthguardGuard ],
 
-
-@NgModule({
+component: AdminHomeComponent },
+{ path: 'deliverHome', component: DeliverHomeComponent },
+{ path: 'userHome', component: UserHomeComponent }
+  ]; @NgModule({
   declarations: [
     AppComponent,
-    UserHomeComponent,
-    SaveddetailsComponent,
-    MyordersComponent,
-    CustomerreceiptComponent,
-    UserComponent,
-    IdcardselectionComponent,
-  ],
+    HeaderComponent,
+    LoginComponent,
+    FooterComponent,
+   RegisterComponent,
+   AdminHomeComponent,
+   UserHomeComponent,
+   DeliverHomeComponent,
+  
+     ],
   imports: [
-    BrowserModule,
+    HttpModule,
     FormsModule,
-    RouterModule.forRoot(appRoutes)
+    BrowserModule,
+  ReactiveFormsModule,
+    RouterModule.forRoot(  appRoutes, { enableTracing: true }  )
   ],
-  providers: [],
+  providers: [ UserService ,AuthguardGuard,RegisterService],
   bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule { }

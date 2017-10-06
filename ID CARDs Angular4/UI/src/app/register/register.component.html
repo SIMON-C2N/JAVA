@@ -1,0 +1,142 @@
+<html>
+	<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet"
+		href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script
+		src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+	</head>
+	<body>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-6 col-md-offset-3">
+					<div class="panel panel-login">
+						<div class="panel-heading">
+							<div class="row">
+								<div class="col-xs-6">
+									<a href="#" id="login-form-link">Login</a>
+								</div>
+								<div class="col-xs-6">
+									<a href="register" class="active" id="register-form-link">Register</a>
+								</div>
+							</div>
+							<hr>
+						</div>
+						<div class="panel-body">
+							<div class="row">
+								<div class="col-lg-12"><div *ngIf="statusCode; else processing">
+	   <div *ngIf="statusCode === 201" [ngClass] = "'success'">
+			Article added successfully.
+	   </div>   
+	   <div *ngIf="statusCode === 409" [ngClass] = "'success'">
+			Article already exists.
+	   </div>   	
+	   <div *ngIf="statusCode === 200" [ngClass] = "'success'">
+			Article updated successfully.
+	   </div>   	      
+	   <div *ngIf="statusCode === 204" [ngClass] = "'success'">
+			Article deleted successfully.
+	   </div>   	   
+	   <div *ngIf="statusCode === 500" [ngClass] = "'error'">
+			Internal Server Error.
+	   </div>   	
+	 </div>
+									<form id="register-form" #userForm="ngForm"
+										(ngSubmit)="onSubmit(userForm.value)" method="post" role="form"
+										style="display: block;">
+										<label>Username</label>
+										<div class="form-group" id="">
+											<input type="text"  #usernameRef="ngModel" name="username" minlength="4"  maxlength="10" required id="username" tabindex="1"
+												class="form-control" ngModel placeholder="enter username">
+											<div *ngIf="usernameRef.errors && (usernameRef.dirty || usernameRef.touched)" class="alert alert-danger">
+											<div [hidden]="!usernameRef.errors.required">
+											   please enter username
+	
+												</div>
+											<div [hidden]="!usernameRef.errors.minlength">
+											please enter atleast 4 Charecters
+											</div>
+											
+												 
+											</div>
+											<p>Ex. Saiprashanth</p>
+										</div>
+										<label>Email</label>
+										<div class="form-group">
+											<input type="email"   #emailRef="ngModel"  required  name="email" id="email" tabindex="2"
+												class="form-control" placeholder="Email Address" ngModel>
+												<div [hidden]="emailRef.valid || emailRef.pristine" class="alert alert-danger">
+													Please enter email
+													</div>
+												
+										</div>
+										<label>Password</label>
+										<div class="form-group">
+											<input type="password" #passwordRef="ngModel" required name="password" id="password"
+												tabindex="2" required class="form-control" placeholder="Password"
+												ngModel>
+	
+												<div [hidden]="passwordRef.valid || passwordRef.pristine" class="alert alert-danger">
+													Please enter  password
+													</div>
+												
+										</div>
+										
+										<label>Confirm Password</label>
+										<div class="form-group">
+											<input type="password"    #cpasswordRef="ngModel"    required name="cpassword"
+												id="cpassword" tabindex="2" class="form-control"
+												placeholder="Confirm Password" ngModel>
+												<div [hidden]="cpasswordRef.valid || cpasswordRef.pristine" class="alert alert-danger">
+													Please enter confirm password
+													</div>
+												
+										</div>
+										<label>MobileNo</label>
+										<div class="form-group" id="">
+											<input type="text"    #mobilenumberRef="ngModel"  pattern="[1-9]{1}[0-9]{9}"   required    ngModel name="mobilenumber" id="mobilenumber"
+												tabindex="2" class="form-control" placeholder="mobilenmber">
+												<div *ngIf="mobilenumberRef.errors && (mobilenumberRef.dirty || mobilenumberRef.touched)" class="alert alert-danger">
+														<div [hidden]="!mobilenumberRef.errors.pattern">
+														   please enter 10 digit number
+				
+															</div>
+														
+															 
+														</div>
+														
+										</div>
+										<label>Address</label>
+										<textarea class="form-group"  #addressRef="ngModel" required ngModel name="address" rows="4"
+											cols="70">
+											
+										
+										
+										</textarea>
+	
+										<div [hidden]="addressRef.valid || addressRef.pristine" class="alert alert-danger">
+											Please enter address
+											</div>
+							<div class="form-group">
+											<div class="row">
+												<div class="col-sm-6 col-sm-offset-3">
+													<input type="submit"    [disabled]="!userForm.form.valid" name="register-submit"
+														id="register-submit" tabindex="4"
+														class="form-control btn btn-register" value="Register Now">
+												</div>
+											</div>
+										</div>
+									</form>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+	</html>

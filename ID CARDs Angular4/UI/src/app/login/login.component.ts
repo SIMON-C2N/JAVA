@@ -14,12 +14,7 @@ export class LoginComponent implements OnInit {
     console.log( data );
 }
 
-
-
-
   constructor( private router: Router ,private user: UserService ) { }
-  
-
   ngOnInit() {
   }
 
@@ -27,12 +22,8 @@ export class LoginComponent implements OnInit {
 e.preventDefault();
 console.log(e);
 var  role    =e.target.elements[0].value;
-
 var username=e.target.elements[1].value;
 var password=e.target.elements[2].value;
-
-
-
 
 if (role == 'admin' &&  username == 'admin' &&  password == 'admin'){
 this.user.setUserLoggedIn();
@@ -42,6 +33,10 @@ this.user.setUserLoggedIn();
   
     this.router.navigate (['deliverHome']);
   }
+  else if (role == 'user' &&  username == 'user' &&  password == 'user'){
+    
+      this.router.navigate (['user']);
+    }
   else {
     this.router.navigate (['login']);
   }

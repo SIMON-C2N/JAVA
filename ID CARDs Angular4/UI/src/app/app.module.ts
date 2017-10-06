@@ -16,6 +16,11 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { UserService } from './user.service';
 import { AuthguardGuard } from './authguard.guard'; 
 import { RegisterService } from './register.service';
+import { UserComponent } from './user/user.component';
+import { MyordersComponent} from './myorders/myorders.component';
+import {CustomerreceiptComponent} from './customerreceipt/customerreceipt.component';
+import { IdcardselectionComponent } from './idcardselection/idcardselection.component';
+import {SaveddetailsComponent} from './saveddetails/saveddetails.component';
 
 
 const appRoutes: Routes = [
@@ -27,7 +32,39 @@ canActivate : [ AuthguardGuard ],
 
 component: AdminHomeComponent },
 { path: 'deliverHome', component: DeliverHomeComponent },
-{ path: 'userHome', component: UserHomeComponent }
+{ path: 'userHome', component: UserHomeComponent },
+{
+  path: 'userHome',
+  component: UserHomeComponent
+},
+{
+  path: '',
+  component: UserComponent
+ },
+ {
+   path: 'user',
+   component: UserComponent
+ },
+{
+  path: 'Home',
+  component: UserHomeComponent
+},
+{
+  path: 'IdCardSelection',
+  component: IdcardselectionComponent
+},
+{
+  path: 'SavedDetails',
+  component: SaveddetailsComponent
+},
+{
+  path: 'MyOrders',
+  component: MyordersComponent
+},
+{
+  path: 'CustomerReceipt',
+  component: CustomerreceiptComponent
+}
   ]; @NgModule({
   declarations: [
     AppComponent,
@@ -38,8 +75,12 @@ component: AdminHomeComponent },
    AdminHomeComponent,
    UserHomeComponent,
    DeliverHomeComponent,
-  
-     ],
+   UserComponent,
+   MyordersComponent,
+   CustomerreceiptComponent,
+   SaveddetailsComponent,
+   IdcardselectionComponent
+ ],
   imports: [
     HttpModule,
     FormsModule,

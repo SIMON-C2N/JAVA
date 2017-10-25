@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.c2n.entity.Profile;
 
-public interface IProfileService {
+public interface IRegisterService {
      List<Profile> getAllProfiles();
      Profile getProfileById(int profileId);
      boolean createProfile(Profile profile);

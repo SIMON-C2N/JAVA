@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
+import { HttpClientModule} from '@angular/common/http'
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
@@ -8,19 +9,20 @@ import { FooterComponent } from './footer/footer.component';
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent  } from './login/login.component';
 import { RouterModule, Routes } from '@angular/router';
-import { FormGroup, FormBuilder, Validators, FormControl, FormsModule } from '@angular/forms';
+import { FormsModule, FormGroup, FormBuilder, Validators, FormControl, ReactiveFormsModule } from '@angular/forms';
 import { AdminHomeComponent } from './admin-home/admin-home.component';
 import { UserHomeComponent } from './user-home/user-home.component';
 import { DeliverHomeComponent } from './deliver-home/deliver-home.component';
-import { ReactiveFormsModule } from '@angular/forms';
 import { UserService } from './user.service';
 import { AuthguardGuard } from './authguard.guard'; 
-import { RegisterService } from './register.service';
 import { UserComponent } from './user/user.component';
 import { MyordersComponent} from './myorders/myorders.component';
 import {CustomerreceiptComponent} from './customerreceipt/customerreceipt.component';
 import { IdcardselectionComponent } from './idcardselection/idcardselection.component';
 import {SaveddetailsComponent} from './saveddetails/saveddetails.component';
+import { DbComponent } from './db/db.component';
+import { RegisterService } from './register.service';
+import { LoginService } from './login.service';
 
 
 const appRoutes: Routes = [
@@ -62,6 +64,10 @@ component: AdminHomeComponent },
   component: MyordersComponent
 },
 {
+  path: 'me',
+  component: DbComponent
+},
+{
   path: 'CustomerReceipt',
   component: CustomerreceiptComponent
 }
@@ -79,16 +85,18 @@ component: AdminHomeComponent },
    MyordersComponent,
    CustomerreceiptComponent,
    SaveddetailsComponent,
-   IdcardselectionComponent
+   IdcardselectionComponent,
+   DbComponent
  ],
   imports: [
     HttpModule,
-    FormsModule,
     BrowserModule,
-  ReactiveFormsModule,
+    FormsModule,
+    HttpClientModule,
+    ReactiveFormsModule,
     RouterModule.forRoot(  appRoutes, { enableTracing: true }  )
   ],
-  providers: [ UserService ,AuthguardGuard,RegisterService],
+  providers: [ UserService ,AuthguardGuard,RegisterService, LoginService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

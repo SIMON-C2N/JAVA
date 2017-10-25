@@ -28,11 +28,20 @@ const templates: TemplateMenu[] = [
 export class IdcardselectionComponent implements OnInit {
   temps = templates;
   url
-  inputValue ="Java";
   constructor(private router: Router) {}
+  fullname =""
+  empid = ""
+  bloodgroup = ""
+  designation = ""
   onselectTemplate(temp: TemplateMenu) {
     this.url=temp.imgurl;
     console.log("coming");
+  }
+  clearAll(){
+    this.fullname=""
+    this.empid=""
+    this.bloodgroup=""
+    this.designation=""
   }
   ngOnInit() {
   }

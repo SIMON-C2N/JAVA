@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import com.c2n.dao.IProfileDAO;
 import com.c2n.entity.Profile;
 @Service
-public class ProfileService implements IProfileService {
+public class ProfileService implements IRegisterService {
 	@Autowired
 	private IProfileDAO profileDAO;
 	@Override

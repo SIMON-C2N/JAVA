@@ -84,7 +84,7 @@ export class RegisterComponent implements OnInit {
         let user = new User(username,email,password,cpassword,mobilenumber,address);
         //console.log(username,email,password,cpassword,mobilenumber,address);
         console.log(user);
-        this.registerService.registerUser(user)
+        this.registerService.registerUser(user) 
         .subscribe(successCode=>{
           this.statusCode=successCode
         },
@@ -96,12 +96,8 @@ export class RegisterComponent implements OnInit {
     this.statusCode = null;
   this.requestProcessing = true;   
  }
- //Go back from update to create
- backToCreateProfile() {
-    this.profileIdToUpdate = null;
-    this.regForm.reset();	  
-  this.processValidation = false;
- }
+
+
 }
 
   

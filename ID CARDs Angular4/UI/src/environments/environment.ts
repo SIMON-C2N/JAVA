@@ -6,5 +6,6 @@
 export const environment = {
   production: false,
   ENDPOINT_URL: 'http://localhost:8080/user/all-profiles',
-  ENDPOINT_URL1:'http://localhost:8080/user/profile'
+  ENDPOINT_URL1:'http://localhost:8080/user/profile',
+  validateLogin: 'http://localhost:8080/user/validateUser'
 };

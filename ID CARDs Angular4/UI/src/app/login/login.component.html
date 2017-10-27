@@ -18,7 +18,7 @@
 					<div class="panel-body">
 						<div class="row">
 							<div class="col-lg-12">
-								<form   (ngSubmit)="onSubmit()" #loginForm="ngForm" (submit)="loginUser($event)" method="post" role="form" style="display: block;">
+								<form   #loginForm="ngForm" (submit)="loginUser($event)" method="post" role="form" style="display: block;">
 									<div class="form-group">
 									<label>Role</label>
 									<select class="form-control" name="role" id="role"  #roleRef="ngModel" ngModel required >
@@ -68,9 +68,6 @@
 				</div>
 			</div>
 		</div>
-	</div>
-	<div *ngFor="let profile of allusers">
-		
 	</div>
 	</body></html>
 	<app-footer></app-footer>

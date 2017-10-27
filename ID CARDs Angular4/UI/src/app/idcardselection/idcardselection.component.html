@@ -7,19 +7,15 @@
 		<img src="{{template.imgurl}}"/>
 		</li>
   </ul>
-  <ul class="pagination">
-    <li><a href="#">1</a></li>
-    <li><a href="#">2</a></li>
-    <li><a href="#">3</a></li>
-    <li class="disabled"><a href="#">4</a></li>
-    <li><a href="#">5</a></li>
-  </ul>
+</div>
+<!--Cart display--> 
+<div >
+    <span id="cart" (click)="addCart()">Cart {{citems}}</span>
 </div>
 <div class="container" id="main">
   <!-- Modal -->
   <div class="modal fade" id="viewTemp" role="FadeIn">
     <div class="modal-dialog modal-lg">
-    
       <!-- Modal content-->
       <div class="modal-content">
         <div class="modal-header">
@@ -30,11 +26,15 @@
       <img id="choosentemp" src="{{url}}"/>
         <div class="modal-footer">
     <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clearAll()">Close</button>
-    <button type="button" class="btn btn-info">Save Changes</button>			
-    <button type="button" class="btn btn-success">Place Order</button>	
+    <button type="button" class="btn btn-info" (click)="addCart()">AddToCart</button>			
+    <button type="button" class="btn btn-success">Place Order</button>	 
         </div>
       </div>
       </div>
     </div>
   </div>
 </div>
+<mat-card class="cart">
+    Cart{{citems}}
+  </mat-card>
+

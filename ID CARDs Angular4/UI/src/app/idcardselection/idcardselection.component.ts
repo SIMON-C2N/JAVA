@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import { Router } from '@angular/router';
 
+
+
 export class TemplateMenu {
   imgurl: String;
 }
@@ -27,6 +29,7 @@ const templates: TemplateMenu[] = [
 })
 export class IdcardselectionComponent implements OnInit {
   temps = templates;
+  citems= 0;
   url
   constructor(private router: Router) {}
   fullname =""
@@ -42,6 +45,10 @@ export class IdcardselectionComponent implements OnInit {
     this.empid=""
     this.bloodgroup=""
     this.designation=""
+  }
+  addCart(){
+    console.log("coming");
+    this.citems=this.citems+1;
   }
   ngOnInit() {
   }

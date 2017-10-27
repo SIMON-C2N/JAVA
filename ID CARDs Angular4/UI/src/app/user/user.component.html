@@ -1,6 +1,12 @@
 <div class="fullpage">
   <div class="menu">
-  <h2 id="welmsg">Welcome {{username}}</h2>
+  <h5 class="dropdown" id="welmsg">Welcome {{username}} <i class="fa fa-caret-down"></i>
+  <li class="dropdown-content">
+    <br>
+    <ul>Profile</ul>
+    <ul (click)="logout()">Logout</ul>
+  </li>
+  </h5>
     <ul class="tabs">
       <li *ngFor="let tab of tabs" (click)="onClick(tab)">
       {{tab.name}}

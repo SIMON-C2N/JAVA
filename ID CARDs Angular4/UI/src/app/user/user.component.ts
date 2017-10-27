@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import { Router } from '@angular/router';
 
 export class Menu {
-  name: string;
+  name: string;    
 }
 
 const menutabs: Menu[] = [
@@ -21,8 +21,9 @@ const menutabs: Menu[] = [
 })
 export class UserComponent implements OnInit {
     selectedTab: Menu;
-      username = 'Venkatesh';
+      username = 'User';
     tabs = menutabs;
+    citems= 0;
   constructor(private router: Router) {}
 
   ngOnInit() {
@@ -31,4 +32,9 @@ export class UserComponent implements OnInit {
     this.selectedTab = tab;
     this.router.navigate([tab.name]);
   }
+
+  logout(){
+    this.router.navigate(['login'])
+  }
+
 }

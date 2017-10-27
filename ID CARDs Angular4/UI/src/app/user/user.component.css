@@ -1,7 +1,8 @@
 #welmsg {
 	float: right;
 	color: #E5E7E9;
-	margin-top: -3px;
+	/*margin-top: -3px;*/
+	cursor: pointer;
 }
 
 .menu {
@@ -41,4 +42,31 @@
 .tabs .text {
 	position: relative;
 	top: -4px;
+}
+
+.dropdown {
+	position: relative;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #154360;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+	width: 1000px;
+	color: #E5E7E9;
+}
+.dropdown-content a:hover {background-color: #f1f1f1}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown:hover .dropbtn {
+    background-color: #3e8e41;
+}
+
+#cart{
+	color: #E5E7E9;
 }

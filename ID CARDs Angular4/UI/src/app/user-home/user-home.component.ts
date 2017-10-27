@@ -13,7 +13,7 @@ const menutabs: Menu[] = [
   {name: 'MyOrders'},
   {name: 'CustomerReceipt'}
 ];
-
+ 
 
 @Component({
   selector: 'app-user-home',

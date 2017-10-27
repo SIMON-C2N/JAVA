@@ -10,13 +10,14 @@ import { LoginService } from '../login.service';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
+
 export class LoginComponent implements OnInit {
   allusers: User[];
   statusCode: number;
-  userflag: boolean;
+  userflag: any;
   username: any;
-  vusername='';
-  vpassword='';
+  password: any;
+  role: any;
    onSubmit( data: any ) {
     console.log( data );
 }
@@ -25,43 +26,45 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
   } 
 
+//after submiting login form control comes here
 loginUser(e){ 
-e.preventDefault();
-
-console.log(e);
-var  role    =e.target.elements[0].value;
+  
+console.log("coming to loginuser");
+var  role=e.target.elements[0].value;
 var username=e.target.elements[1].value;
 var password=e.target.elements[2].value;
+this.username=username;
+this.password=password;
+this.role=role;
 
-if (role == 'admin' &&  username == 'admin' &&  password == 'admin'){
-this.user.setUserLoggedIn();
-  this.router.navigate (['adminHome']);
-}
- else if (role == 'deliver' &&  username == 'deliver' &&  password == 'deliver'){
-  
-    this.router.navigate (['deliverHome']);
-  }
-  else {
-    this.router.navigate (['login']);
-  }
- this.getAllUsers();
- this.vusername=username;
- if(this.userflag)
+ this.userValidator();
+
+ if(this.statusCode==200 && this.role=='user')
  {
   this.router.navigate (['user']);
  }
+ else
+ this.router.navigate (['login']);
 }
 
 getAllUsers() {
   this.loginservice.getAllUserDetails().subscribe(
-    users =>this.allusers = users,
+    users =>{
+      this.allusers = users
+    },
     errorCode => this.statusCode = errorCode
   );  
 }
 
 userValidator(){
-  this.vusername=this.username
- return false;
+
+  console.log("coming to uservalidator");
+  this.loginservice.validateLogin(this.username, this.password).subscribe(
+    status=>{
+      this.statusCode=status
+    },
+    errorCode => this.statusCode = errorCode
+  );
 }
 
 }

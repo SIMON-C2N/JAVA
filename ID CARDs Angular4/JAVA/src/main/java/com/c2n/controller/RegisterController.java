@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import com.c2n.entity.Profile;
+import com.c2n.service.ILoginService;
 import com.c2n.service.IRegisterService;
 
 @Controller
@@ -25,6 +26,8 @@ import com.c2n.service.IRegisterService;
 public class RegisterController {
 	@Autowired
 	private IRegisterService profileService;
+	@Autowired
+	private ILoginService loginService;
 	@GetMapping("profile")
 	public ResponseEntity<Profile> getProfileById(@RequestParam("id") String id) {
 		Profile profile = profileService.getProfileById(Integer.parseInt(id));
@@ -55,4 +58,16 @@ public class RegisterController {
 		profileService.deleteProfile(Integer.parseInt(id));
 		return new ResponseEntity<Void>(HttpStatus.NO_CONTENT);
 	}	
+	@PostMapping("validateUser")
+	public ResponseEntity<Void> validateUser(@RequestBody Profile profile, UriComponentsBuilder builder) {
+        boolean flag = loginService.loginValidator(profile);
+        System.out.println("sssssssssssssssssss"+flag);
+        if (flag == true) {
+        	return new ResponseEntity<Void>(HttpStatus.OK);
+        }
+        else
+        {
+        	return new ResponseEntity<Void>(HttpStatus.CONFLICT);
+        }
+	}
 } 

@@ -23,6 +23,9 @@ import {SaveddetailsComponent} from './saveddetails/saveddetails.component';
 import { DbComponent } from './db/db.component';
 import { RegisterService } from './register.service';
 import { LoginService } from './login.service';
+import { CartComponent } from './cart/cart.component';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {MatCardModule} from '@angular/material';
 
 
 const appRoutes: Routes = [
@@ -64,8 +67,8 @@ component: AdminHomeComponent },
   component: MyordersComponent
 },
 {
-  path: 'me',
-  component: DbComponent
+  path: 'cart',
+  component: CartComponent
 },
 {
   path: 'CustomerReceipt',
@@ -86,7 +89,8 @@ component: AdminHomeComponent },
    CustomerreceiptComponent,
    SaveddetailsComponent,
    IdcardselectionComponent,
-   DbComponent
+   DbComponent,
+   CartComponent
  ],
   imports: [
     HttpModule,
@@ -94,6 +98,8 @@ component: AdminHomeComponent },
     FormsModule,
     HttpClientModule,
     ReactiveFormsModule,
+    BrowserAnimationsModule,
+    MatCardModule,
     RouterModule.forRoot(  appRoutes, { enableTracing: true }  )
   ],
   providers: [ UserService ,AuthguardGuard,RegisterService, LoginService],

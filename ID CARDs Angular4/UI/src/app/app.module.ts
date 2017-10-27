@@ -29,8 +29,8 @@ import {MatCardModule} from '@angular/material';
 
 
 const appRoutes: Routes = [
-{ path: '', redirectTo: '/login', pathMatch: 'full'  },
-{ path: 'login',    component:        LoginComponent },
+{ path: '', redirectTo: 'login', pathMatch: 'full'  },
+{ path: 'login',    component: LoginComponent },
 { path: 'register', component: RegisterComponent },
 { path: 'adminHome',
 canActivate : [ AuthguardGuard ],

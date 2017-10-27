@@ -36,7 +36,7 @@ export class User{
 export class RegisterComponent implements OnInit {
   //component properties
   submitted='false';
-  allProfiles: User[];
+  
   statusCode: number;
   username='';
   requestProcessing = false; 

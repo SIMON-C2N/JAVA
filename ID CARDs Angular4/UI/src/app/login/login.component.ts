@@ -28,7 +28,7 @@ export class LoginComponent implements OnInit {
 
 //after submiting login form control comes here
 loginUser(e){ 
-  
+
 console.log("coming to loginuser");
 var  role=e.target.elements[0].value;
 var username=e.target.elements[1].value;
@@ -38,13 +38,6 @@ this.password=password;
 this.role=role;
 
  this.userValidator();
-
- if(this.statusCode==200 && this.role=='user')
- {
-  this.router.navigate (['user']);
- }
- else
- this.router.navigate (['login']);
 }
 
 getAllUsers() {
@@ -61,7 +54,13 @@ userValidator(){
   console.log("coming to uservalidator");
   this.loginservice.validateLogin(this.username, this.password).subscribe(
     status=>{
-      this.statusCode=status
+      this.statusCode=status;
+      if(status==200 && this.role=='user')
+      {
+       this.router.navigate (['user']);
+      }
+      else
+      this.router.navigate (['login']);
     },
     errorCode => this.statusCode = errorCode
   );

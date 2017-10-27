@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import { Router } from '@angular/router';
+import {  } from './login/login.component';
 
 export class Menu {
   name: string;    
@@ -27,6 +28,7 @@ export class UserComponent implements OnInit {
   constructor(private router: Router) {}
 
   ngOnInit() {
+    
   }
   onClick(tab: Menu) {
     this.selectedTab = tab;

@@ -58,16 +58,5 @@ public class RegisterController {
 		profileService.deleteProfile(Integer.parseInt(id));
 		return new ResponseEntity<Void>(HttpStatus.NO_CONTENT);
 	}	
-	@PostMapping("validateUser")
-	public ResponseEntity<Void> validateUser(@RequestBody Profile profile, UriComponentsBuilder builder) {
-        boolean flag = loginService.loginValidator(profile);
-        System.out.println("sssssssssssssssssss"+flag);
-        if (flag == true) {
-        	return new ResponseEntity<Void>(HttpStatus.OK);
-        }
-        else
-        {
-        	return new ResponseEntity<Void>(HttpStatus.CONFLICT);
-        }
-	}
+	
 } 

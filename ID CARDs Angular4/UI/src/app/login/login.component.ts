@@ -5,6 +5,7 @@ import { NgModule } from '@angular/core';
 import { UserService } from '../user.service';
 import { User } from '../register/register.component';
 import { LoginService } from '../login.service';
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -18,6 +19,10 @@ export class LoginComponent implements OnInit {
   username: any;
   password: any;
   role: any;
+  i: any;
+  j: any;
+  token: any;
+ 
    onSubmit( data: any ) {
     console.log( data );
 }
@@ -38,12 +43,36 @@ this.password=password;
 this.role=role;
 
  this.userValidator();
+ this.getAllUsers();
 }
 
-getAllUsers() {
+private _username = new BehaviorSubject(this.username);
+currentUser = this._username.asObservable();
+
+getAllUsers() { 
   this.loginservice.getAllUserDetails().subscribe(
     users =>{
-      this.allusers = users
+      this.allusers = users;
+      //for loop to ge the current user
+      for(this.i=0; this.i<users.length;this.i++)
+      {
+        this.token=true;
+        for(this.j=0; this.j<users.length;this.j++)
+        {
+          this.token=true;
+          if(this.username==users[this.j].username)
+          {
+            this.username=users[this.j].username;
+            this.token=false;
+          }
+          if(this.token==false)
+          break;
+        }
+        if(this.token==false)
+        break;
+      }
+      console.log(this.username);
+      this.loginservice.setWelcomeUserName(this.username);
     },
     errorCode => this.statusCode = errorCode
   );  
@@ -65,5 +94,6 @@ userValidator(){
     errorCode => this.statusCode = errorCode
   );
 }
+
 
 }

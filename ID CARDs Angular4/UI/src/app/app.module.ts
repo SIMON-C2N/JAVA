@@ -26,6 +26,7 @@ import { LoginService } from './login.service';
 import { CartComponent } from './cart/cart.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatCardModule} from '@angular/material';
+import { ProfileComponent } from './profile/profile.component';
 
 
 const appRoutes: Routes = [
@@ -42,10 +43,6 @@ component: AdminHomeComponent },
   path: 'userHome',
   component: UserHomeComponent
 },
-{
-  path: '',
-  component: UserComponent
- },
  {
    path: 'user',
    component: UserComponent
@@ -90,7 +87,8 @@ component: AdminHomeComponent },
    SaveddetailsComponent,
    IdcardselectionComponent,
    DbComponent,
-   CartComponent
+   CartComponent,
+   ProfileComponent
  ],
   imports: [
     HttpModule,
@@ -102,7 +100,7 @@ component: AdminHomeComponent },
     MatCardModule,
     RouterModule.forRoot(  appRoutes, { enableTracing: true }  )
   ],
-  providers: [ UserService ,AuthguardGuard,RegisterService, LoginService],
+  providers: [ UserService ,AuthguardGuard,RegisterService, LoginService, LoginComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

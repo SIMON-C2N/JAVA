@@ -1,13 +1,18 @@
 package com.c2n.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import com.c2n.entity.Profile;
@@ -34,4 +39,15 @@ public class LoginController {
         }
 	}
 	
+	@GetMapping("oneProfile")
+	public ResponseEntity<List<Profile>> getProfileByUserName(@RequestParam("username") String username) {
+		List<Profile> profile = loginService.getProfileByUserName(username);
+		return new ResponseEntity<List<Profile>>(profile, HttpStatus.OK);
+	}
+	
+	@PutMapping("update")
+	public ResponseEntity<Profile> updateProfile(@RequestBody Profile profile) {
+		loginService.updateUser(profile);
+		return new ResponseEntity<Profile>(profile, HttpStatus.OK);
+	}
 }

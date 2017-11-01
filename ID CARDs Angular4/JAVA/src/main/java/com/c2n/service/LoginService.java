@@ -1,5 +1,7 @@
 package com.c2n.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,6 +23,19 @@ public class LoginService implements ILoginService{
 		return true;
 		else
 		return false;
+	}
+
+	@Override
+	public List<Profile> getProfileByUserName(String username) {
+		// TODO Auto-generated method stub
+		return loginDao.getProfileByUserName(username);
+	}
+
+	@Override
+	public void updateUser(Profile profile) {
+		// TODO Auto-generated method stub
+		loginDao.updateUser(profile);
+		
 	}
 
 }

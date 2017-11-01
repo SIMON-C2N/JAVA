@@ -1,5 +1,7 @@
 package com.c2n.dao;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityNotFoundException;
 import javax.persistence.PersistenceContext;
@@ -7,6 +9,8 @@ import javax.swing.text.html.parser.Entity;
 
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
+
+import com.c2n.entity.Profile;
 @Transactional
 @Repository
 public class LoginDAO implements ILoginDAO{
@@ -20,6 +24,24 @@ public class LoginDAO implements ILoginDAO{
 		int count = entityManager.createQuery(hql).setParameter(1, username)
 		              .setParameter(2, password).getResultList().size();
 		return count > 0 ? true : false;
+	}
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Profile> getProfileByUserName(String username) {
+		String hql = "FROM Profile as user WHERE user.username= ?";
+		List<Profile> oneuser= entityManager.createQuery(hql).setParameter(1, username).getResultList();
+		return oneuser;
+	}
+	@Override
+	public void updateUser(Profile profile) {
+		Profile updateU = (Profile) getProfileByUserName(profile.getUsername());//returns arraylist can't be cast to the entity type Profile
+		updateU.setUsername(profile.getUsername());
+		updateU.setEmail(profile.getEmail());
+		updateU.setPassword(profile.getPassword());
+		updateU.setCpassword(profile.getCpassword());
+		updateU.setMobilenumber(profile.getMobilenumber());
+		updateU.setAddress(profile.getAddress());
+		entityManager.flush();		
 	}
 	
 

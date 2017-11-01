@@ -1,9 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import { Router } from '@angular/router';
 import { LoginService } from '../login.service';
+import {UserService } from '../user.service';
 import { User } from '../register/register.component';
 import { FormControl, FormGroup, Validators, FormsModule } from '@angular/forms';
-
 
 export class Menu {
   name: string;    
@@ -26,17 +26,14 @@ const menutabs: Menu[] = [
 })
 export class UserComponent implements OnInit {
     allusers: User[];
+    cUser:User[];
     statusCode: number;
     selectedTab: Menu;
-    //username = 'User';
+    username 
     tabs = menutabs;
     citems= 0;
-    currentUser ='';
-    i: any;
-    j: any;
-    token: any;
-    arrayUser:string[];
-    //to edit profile
+    currentUser
+    //for registration
     regForm = new FormGroup({
       username: new FormControl('',  Validators.required),
       email:new FormControl('', Validators.required),
@@ -45,33 +42,42 @@ export class UserComponent implements OnInit {
       mobilenumber:new FormControl('', Validators.required),
       address:new FormControl('', Validators.required)
     });
-  constructor(private router: Router, private loginservice: LoginService) {}
+    //for view profile
+    profileForm = new FormGroup({
+      username: new FormControl('',  Validators.required),
+      email:new FormControl('', Validators.required),
+      password:new FormControl('', Validators.required),
+      cpassword:new FormControl('', Validators.required),
+      mobilenumber:new FormControl('', Validators.required),
+      address:new FormControl('', Validators.required)
+    });
+  constructor(private router: Router, private loginservice: LoginService, private userservice: UserService) {}
 
   ngOnInit() {
-    this.currentUser=this.loginservice.getWelcomeUserName();     
-    //this.loginservice.currentMessage.subscribe(message=>this.currentUser=message)
+    this.username=localStorage.getItem('username');
+    console.log("the coming uname"+this.username);
+   
+    //gets all the users from db
     this.loginservice.getAllUserDetails().subscribe(
       users =>{
         this.allusers = users;
-         //to get the details of the current user
-      for(this.i=0; this.i<users.length;this.i++)
-      {
-        this.token=true;
-        for(this.j=0; this.j<users.length;this.j++)
-        {
-          this.token=true;
-          if(this.currentUser==users[this.j].username)
-          {
-            this.currentUser=users[this.j].username;
-            this.token=false;
-          }
-          if(this.token==false)
-          break;
-        }
-        if(this.token==false)
-        break;
-      }
         console.log(users);
+      },
+      errorCode => this.statusCode = errorCode
+    );
+    //GETS THE CURRENT USER DETAILS
+    this.loginservice.getProfileByUserName(this.username).subscribe(
+      currentuser=>{
+        this.cUser=currentuser;
+        this.profileForm.setValue(
+          {username:currentuser[0].username,
+            email:currentuser[0].email,
+            password:currentuser[0].password,
+            cpassword:currentuser[0].cpassword,
+            mobilenumber:currentuser[0].mobilenumber,
+            address:currentuser[0].address
+          });
+        console.log(currentuser);
       },
       errorCode => this.statusCode = errorCode
     );
@@ -82,11 +88,30 @@ export class UserComponent implements OnInit {
     this.selectedTab = tab;
     this.router.navigate([tab.name]);
   }
+  //for editUserProfile
+  editUserProfile(){
+    console.log("coming to editUserProfile");
+    let username = this.profileForm.get('username').value;
+    let email = this.profileForm.get('email').value;
+    let password = this.profileForm.get('password').value;
+    let cpassword = this.profileForm.get('cpassword').value;	  
+    let mobilenumber = this.profileForm.get('mobilenumber').value;
+    let address = this.profileForm.get('address').value;
+    let updatedUserDtls = new User(username,email,password,cpassword,mobilenumber,address);
+    console.log(updatedUserDtls);
+    this.userservice.updateUser(updatedUserDtls) 
+    .subscribe(successCode=>{
+      this.statusCode=successCode;
+      console.log("AfterUpdation"+this.statusCode);
+    },
+    errorCode => this.statusCode = errorCode
+  );
+  }
   //for logout function
   logout(){
+    this.username='';
+    this.currentUser='';
+    console.log("username and current user cleaning done");
     this.router.navigate(['login'])
   }
-
-  
-
 }

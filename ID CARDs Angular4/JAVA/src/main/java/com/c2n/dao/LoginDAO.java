@@ -3,10 +3,7 @@ package com.c2n.dao;
 import java.util.List;
 
 import javax.persistence.EntityManager;
-import javax.persistence.EntityNotFoundException;
 import javax.persistence.PersistenceContext;
-import javax.swing.text.html.parser.Entity;
-
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -32,17 +29,19 @@ public class LoginDAO implements ILoginDAO{
 		List<Profile> oneuser= entityManager.createQuery(hql).setParameter(1, username).getResultList();
 		return oneuser;
 	}
+	public Profile getProfileById(int profileId) {
+		return entityManager.find(Profile.class, profileId);
+	}
 	@Override
 	public void updateUser(Profile profile) {
-		Profile updateU = (Profile) getProfileByUserName(profile.getUsername());//returns arraylist can't be cast to the entity type Profile
+		System.out.println("coming to update dao");
+		Profile updateU = getProfileById(profile.getProfileId());
 		updateU.setUsername(profile.getUsername());
 		updateU.setEmail(profile.getEmail());
 		updateU.setPassword(profile.getPassword());
 		updateU.setCpassword(profile.getCpassword());
 		updateU.setMobilenumber(profile.getMobilenumber());
 		updateU.setAddress(profile.getAddress());
-		entityManager.flush();		
+		entityManager.flush();
 	}
-	
-
 }

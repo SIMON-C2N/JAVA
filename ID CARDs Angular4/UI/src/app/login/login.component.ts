@@ -21,11 +21,16 @@ export class LoginComponent implements OnInit {
   role: any;
   constructor( private router: Router ,private user: UserService, private loginservice: LoginService ) { }
   ngOnInit() {
+    this.loginservice.getAllUserDetails().subscribe(
+      users=>{
+        this.allusers=users;
+        console.log(this.allusers);
+      }
+    );
   } 
 
 //after submiting login form control comes here
 loginUser(e){ 
-
 console.log("coming to loginuser");
 var  role=e.target.elements[0].value;
 var username=e.target.elements[1].value;
@@ -54,6 +59,5 @@ userValidator(){
     errorCode => this.statusCode = errorCode
   );
 }
-
 
 }

@@ -17,6 +17,17 @@ const menutabs: Menu[] = [
   {name: 'CustomerReceipt'}
 ];
 
+export class UserForUpdate{
+  constructor(
+      public profileId:number,
+      public username: string, 
+      public email: string,
+      public password: string,
+      public cpassword: string,
+      public mobilenumber: string,
+      public address:string) { 
+     }
+}
 
 
 @Component({
@@ -24,12 +35,15 @@ const menutabs: Menu[] = [
   templateUrl: './user.component.html',
   styleUrls: ['./user.component.css']
 })
+
+
 export class UserComponent implements OnInit {
     allusers: User[];
-    cUser:User[];
+    cUser:UserForUpdate[];
     statusCode: number;
     selectedTab: Menu;
     username 
+    profileid
     tabs = menutabs;
     citems= 0;
     currentUser
@@ -77,6 +91,7 @@ export class UserComponent implements OnInit {
             mobilenumber:currentuser[0].mobilenumber,
             address:currentuser[0].address
           });
+          this.profileid=currentuser[0].profileId
         console.log(currentuser);
       },
       errorCode => this.statusCode = errorCode
@@ -91,18 +106,20 @@ export class UserComponent implements OnInit {
   //for editUserProfile
   editUserProfile(){
     console.log("coming to editUserProfile");
+    this.profileid
     let username = this.profileForm.get('username').value;
     let email = this.profileForm.get('email').value;
     let password = this.profileForm.get('password').value;
     let cpassword = this.profileForm.get('cpassword').value;	  
     let mobilenumber = this.profileForm.get('mobilenumber').value;
     let address = this.profileForm.get('address').value;
-    let updatedUserDtls = new User(username,email,password,cpassword,mobilenumber,address);
+    let updatedUserDtls = new UserForUpdate(this.profileid,username,email,password,cpassword,mobilenumber,address);
     console.log(updatedUserDtls);
-    this.userservice.updateUser(updatedUserDtls) 
+    this.userservice.updateUser(updatedUserDtls)
     .subscribe(successCode=>{
       this.statusCode=successCode;
-      console.log("AfterUpdation"+this.statusCode);
+      if(this.statusCode==200)
+      alert("Details updated successfully");
     },
     errorCode => this.statusCode = errorCode
   );

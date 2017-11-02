@@ -32,3 +32,37 @@ li {
 	margin-top: 50px;
 	cursor: pointer;
 }
+img {
+	height: 10em;
+	width: 20em;
+	padding: 5px;
+	border-radius: 1em;
+}
+
+li {
+	cursor: pointer;
+	list-style-type: none;
+	padding: .2em;
+	orientation: landscape;
+	display: inline;
+}
+.idtemplates{
+	margin-top: 5em;
+	position: absolute;
+}
+.design{
+	font-family:
+fantasy;
+font-style: initial;
+padding-bottom: 52px;
+}
+
+
+#choosentemp{
+	height: 20em;
+	width: 30em;
+}
+.modal-dialog{
+	width: 80em;
+	border-radius: 50px;
+}

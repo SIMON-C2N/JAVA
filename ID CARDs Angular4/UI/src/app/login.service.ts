@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Http, Response, Headers, URLSearchParams, RequestOptions } from '@angular/http';
 import { Observable } from 'rxjs';
 import { User } from './register/register.component';
+import {UserForUpdate} from './user/user.component';
 import {environment } from '../environments/environment';
 
 @Injectable()
@@ -32,7 +33,7 @@ export class LoginService {
 		return Observable.throw(error.status);
     }
 
-    getProfileByUserName(username: string): Observable<User[]> {
+    getProfileByUserName(username: string): Observable<UserForUpdate[]> {
       let cpHeaders = new Headers({ 'Content-Type': 'application/json' });
       let cpParams = new URLSearchParams();
       cpParams.set('username', username);

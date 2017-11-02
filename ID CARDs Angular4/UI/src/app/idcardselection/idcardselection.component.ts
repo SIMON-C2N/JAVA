@@ -7,49 +7,62 @@ export class TemplateMenu {
   imgurl: String;
 }
 
-const templates: TemplateMenu[] = [
-  {imgurl: 'assets/templates/template001.jpg'},
-  {imgurl: 'assets/templates/template002.jpg'},
-  {imgurl: 'assets/templates/template003.jpg'},
-  {imgurl: 'assets/templates/template004.jpg'},
-  {imgurl: 'assets/templates/template005.jpg'},
-  {imgurl: 'assets/templates/template006.jpg'},
-  {imgurl: 'assets/templates/template007.jpg'},
-  {imgurl: 'assets/templates/template008.jpg'},
-  {imgurl: 'assets/templates/template010.jpg'},
-  {imgurl: 'assets/templates/template012.jpg'},
-  {imgurl: 'assets/templates/template013.jpg'},
-  {imgurl: 'assets/templates/template014.jpg'}
-];
+
 
 @Component({
   selector: 'app-idcardselection',
   templateUrl: './idcardselection.component.html',
   styleUrls: ['./idcardselection.component.css']
 })
+
 export class IdcardselectionComponent implements OnInit {
-  temps = templates;
-  citems= 0;
+
   url
+  product
+  price
+  sizes: string[] = [
+    'ID-1: 3.370 x 2.125 in (85.60 x 53.98 mm)',
+    'ID-2: 4.134 x 2.913 in (105 x 74mm)'
+    
+  ]
+  public cart=[];
+  public recentProduct="None";
   constructor(private router: Router) {}
-  fullname =""
-  empid = ""
-  bloodgroup = ""
-  designation = ""
+  
+  
+  public  productList=[
+  {"id":"idcard1","price":50,"imageURL":'template001',"size1":'ID-1: 3.370 x 2.125 in (85.60 x 53.98 mm)',"size2":'ID-2: 4.134 x 2.913 in (105 x 74mm)'}, 
+  {"id":"idcard2","price":50,"imageURL":'template002',"size1":'ID-1: 3.370 x 2.125 in (85.60 x 53.98 mm)',"size2":'ID-2: 4.134 x 2.913 in (105 x 74mm)'},
+  {"id":"idcard3","price":25,"imageURL":'template003',"size1":'ID-1: 3.370 x 2.125 in (85.60 x 53.98 mm)',"size2":'ID-2: 4.134 x 2.913 in (105 x 74mm)'},
+  {"id":"idcard4","price":150,"imageURL":'template004',"size1":'ID-1: 3.370 x 2.125 in (85.60 x 53.98 mm)',"size2":'ID-2: 4.134 x 2.913 in (105 x 74mm)'},
+  {"id":"idcard5","price":20,"imageURL":'template005',"size1":'ID-1: 3.370 x 2.125 in (85.60 x 53.98 mm)',"size2":'ID-2: 4.134 x 2.913 in (105 x 74mm)'},
+  {"id":"idcard6","price":30,"imageURL":'template006',"size1":'ID-1: 3.370 x 2.125 in (85.60 x 53.98 mm)',"size2":'ID-2: 4.134 x 2.913 in (105 x 74mm)'},
+  {"id":"idcard7","price":40,"imageURL":'template007',"size1":'ID-1: 3.370 x 2.125 in (85.60 x 53.98 mm)',"size2":'ID-2: 4.134 x 2.913 in (105 x 74mm)'},
+  {"id":"idcard8","price":70,"imageURL":'template008',"size1":'ID-1: 3.370 x 2.125 in (85.60 x 53.98 mm)',"size2":'ID-2: 4.134 x 2.913 in (105 x 74mm)'},
+  {"id":"idcard9","price":80,"imageURL":'template009',"size1":'ID-1: 3.370 x 2.125 in (85.60 x 53.98 mm)',"size2":'ID-2: 4.134 x 2.913 in (105 x 74mm)'},
+  {"id":"idcard10","price":90,"imageURL":'template010',"size1":'ID-1: 3.370 x 2.125 in (85.60 x 53.98 mm)',"size2":'ID-2: 4.134 x 2.913 in (105 x 74mm)'}];
+  
+  
+  
+  selectedProduct(product){
+   this.url=product;
+  } 
+  
+  
+   
+   selectedItem(url){
+    this.cart.push(this.url.id);
+    
+    alert(this.url.id+' was added to cart');
+    alert(this.cart)
+   }
+  
   onselectTemplate(temp: TemplateMenu) {
     this.url=temp.imgurl;
     console.log("coming");
   }
-  clearAll(){
-    this.fullname=""
-    this.empid=""
-    this.bloodgroup=""
-    this.designation=""
-  }
-  addCart(){
-    console.log("coming");
-    this.citems=this.citems+1;
-  }
+ 
+  
   ngOnInit() {
   }
 }

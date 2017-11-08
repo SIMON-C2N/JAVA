@@ -7,6 +7,7 @@ import 'rxjs/add/operator/startWith';
 import 'rxjs/add/observable/merge';
 import 'rxjs/add/operator/map';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { LoginService } from '../login.service';
 import { RegisterService } from '../register.service';
 
 export interface UserResponse{
@@ -23,9 +24,18 @@ export class User{
       public password: string,
       public cpassword: string,
       public mobilenumber: string,
-      public address:string) { 
+      public address:string,
+      public role:string) { 
      }
 }
+export class Roles{
+  roleName:string;
+}
+const role:Roles[]=[
+{roleName:"User"},
+{roleName:"Delivary"}
+];
+
 
 @Component( {
     selector: 'app-register',
@@ -33,12 +43,16 @@ export class User{
     styleUrls: ['./register.component.css'],
 
 } )
+
 export class RegisterComponent implements OnInit {
   //component properties
+  allusers: User[];
+  checkuser=''
   submitted='false';
-  
   statusCode: number;
   username='';
+  rounds=2;
+  roles=role;
   requestProcessing = false; 
   profileIdToUpdate = null;
   processValidation = false;
@@ -49,10 +63,11 @@ export class RegisterComponent implements OnInit {
     password:new FormControl('', Validators.required),
     cpassword:new FormControl('', Validators.required),
     mobilenumber:new FormControl('', Validators.required),
-    address:new FormControl('', Validators.required)
+    address:new FormControl('', Validators.required),
+    role:new FormControl('', Validators.required),
   });
   
-  constructor(private registerService: RegisterService) { }
+  constructor(private registerService: RegisterService, private loginservice: LoginService) { }
     
       ngOnInit():void {
 /*        this.http.get<UserResponse>('https://api.github.com/users/seeschweiler').subscribe(
@@ -81,7 +96,8 @@ export class RegisterComponent implements OnInit {
         let cpassword = this.regForm.get('cpassword').value;	  
         let mobilenumber = this.regForm.get('mobilenumber').value;
         let address = this.regForm.get('address').value;
-        let user = new User(username,email,password,cpassword,mobilenumber,address);
+        let role = this.regForm.get('role').value;
+        let user = new User(username,email,password,cpassword,mobilenumber,address,role);
         //console.log(username,email,password,cpassword,mobilenumber,address);
         console.log(user);
         this.registerService.registerUser(user) 
@@ -97,7 +113,16 @@ export class RegisterComponent implements OnInit {
   this.requestProcessing = true;   
  }
 
-
+ checkUser(){
+   console.log(this.checkuser);
+   console.log("coming to checkuser");
+   this.loginservice.getAllUserDetails().subscribe(
+    users=>{
+      this.allusers=users;
+      console.log(this.allusers);
+    }
+  );
+ }
 }
 
   

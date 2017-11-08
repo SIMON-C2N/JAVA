@@ -8,7 +8,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 @Entity
-@Table(name="profile")
+@Table(name="idusers")
 public class Profile implements Serializable { 
 	private static final long serialVersionUID = 1L;
 	@Id
@@ -28,7 +28,8 @@ public class Profile implements Serializable {
 	private String mobilenumber;
 	@Column(name="address")	
 	private String address;
-	
+	@Column(name="role")
+	private String role;
 	
 	
 	public int getProfileId() {
@@ -72,6 +73,12 @@ public class Profile implements Serializable {
 	}
 	public void setAddress(String address) {
 		this.address = address;
+	}
+	public void setRole(String role) {
+		this.role=role;
+	}
+	public String getRole() {
+		return role;
 	}
 	public static long getSerialversionuid() {
 		return serialVersionUID;

@@ -24,6 +24,12 @@ li {
 	width: 80em;
 	border-radius: 50px;
 }
+.modal-content{
+	padding-bottom: 15px;
+	margin-left: 127px;
+	margin-right: 191px;
+	margin-top: 66px;
+}
 
 .cart{
 	width: 70px;
@@ -51,13 +57,10 @@ li {
 	position: absolute;
 }
 .design{
-	font-family:
-fantasy;
-font-style: initial;
-padding-bottom: 52px;
+	font-family: fantasy;
+	font-style: initial;
+	padding-top: 150px;
 }
-
-
 #choosentemp{
 	height: 20em;
 	width: 30em;
@@ -65,4 +68,11 @@ padding-bottom: 52px;
 .modal-dialog{
 	width: 80em;
 	border-radius: 50px;
+}
+img{
+	float: left; 
+}
+#fields{
+    display: inline;
+    padding: 15px;;
 }

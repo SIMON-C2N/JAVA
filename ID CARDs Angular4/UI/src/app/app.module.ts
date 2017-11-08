@@ -25,18 +25,26 @@ import { RegisterService } from './register.service';
 import { LoginService } from './login.service';
 import { CartComponent } from './cart/cart.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {MatCardModule} from '@angular/material';
+import {MatCardModule,MatSelectModule} from '@angular/material';
 import { ProfileComponent } from './profile/profile.component';
-
+import { UploadfileService } from './uploadfile.service';
+import { AngularMultiSelectModule } from 'angular2-multiselect-dropdown/angular2-multiselect-dropdown';
+import { ProfileService } from './profile.service';
 
 const appRoutes: Routes = [
-{ path: '', redirectTo: 'login', pathMatch: 'full'  },
-{ path: 'login',    component: LoginComponent },
-{ path: 'register', component: RegisterComponent },
-{ path: 'adminHome',
-canActivate : [ AuthguardGuard ],
-
-component: AdminHomeComponent },
+{ 
+  path: '', redirectTo: 'login', pathMatch: 'full'  
+},
+{ 
+  path: 'login',    component: LoginComponent 
+},
+{ 
+  path: 'register', component: RegisterComponent 
+},
+{
+   path: 'adminHome',
+   component: AdminHomeComponent
+},
 { path: 'deliverHome', component: DeliverHomeComponent },
 { path: 'userHome', component: UserHomeComponent },
 {
@@ -70,6 +78,10 @@ component: AdminHomeComponent },
 {
   path: 'CustomerReceipt',
   component: CustomerreceiptComponent
+},
+{
+  path:'profile',
+  component:ProfileComponent
 }
   ]; @NgModule({
   declarations: [
@@ -98,9 +110,19 @@ component: AdminHomeComponent },
     ReactiveFormsModule,
     BrowserAnimationsModule,
     MatCardModule,
+    MatSelectModule,
+    AngularMultiSelectModule,
     RouterModule.forRoot(  appRoutes, { enableTracing: true }  )
   ],
-  providers: [ UserService ,AuthguardGuard,RegisterService, LoginService, LoginComponent],
+  providers: [ 
+    UserService,
+    AuthguardGuard,
+    RegisterService, 
+    LoginService, 
+    LoginComponent,
+    UploadfileService,
+    ProfileService
+    ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -22,7 +22,7 @@ public class ProfileService implements IRegisterService {
 	}
 	@Override
 	public synchronized boolean createProfile(Profile profile){
-       if (profileDAO.profileExists(profile.getUsername(),profile.getEmail(),profile.getPassword(),profile.getCpassword(),profile.getMobilenumber(),profile.getAddress())) {
+       if (profileDAO.profileExists(profile.getUsername(),profile.getEmail(),profile.getPassword(),profile.getCpassword(),profile.getMobilenumber(),profile.getAddress(), profile.getRole())) {
     	   return false;
        } else {
     	   profileDAO.createProfile(profile);

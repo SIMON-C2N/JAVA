@@ -132,3 +132,6 @@ select.form-control:not([size]):not([multiple]) {
 	background-color: #1CA347;
 	border-color: #1CA347;
 }
+#roles{
+	width: 50em;
+}

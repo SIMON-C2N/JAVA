@@ -39,8 +39,7 @@
 										style="display: block;">
 								<label>Username</label>
 								<div class="form-group" id=""> 
-									<input type="text" formControlName="username" placeholder="enter username" class="form-control" [(ngModel)]="username">
-									<p>Ex. Saiprashanth</p>
+									<input type="text" formControlName="username" placeholder="enter username" class="form-control" (keyup)="checkUser()" [(ngModel)]="checkuser">
 								</div>
 								<label>Email</label>
 								<div class="form-group">
@@ -61,6 +60,15 @@
 								<div class="form-group" id="">
 									<label>Address</label>
 									<textarea formControlName="address" class="form-control"></textarea>
+								</div>
+								<div class="form-group" id="">
+								<mat-form-field id="roles">
+									<mat-select placeholder="Select Role" id="some" formControlName="role">
+									  <mat-option *ngFor="let role of roles" [value]="role.roleName"  >
+										{{ role.roleName }}
+									  </mat-option>
+									</mat-select>
+								  </mat-form-field>
 								</div>
 								<div class="col-sm-6 col-sm-offset-3">
 									<input type="submit"  value="Register Now" class="form-control btn btn-register" 

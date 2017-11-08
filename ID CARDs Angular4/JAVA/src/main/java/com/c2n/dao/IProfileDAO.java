@@ -8,6 +8,6 @@ public interface IProfileDAO {
     void createProfile(Profile profile);
     void updateProfile(Profile profile);
     void deleteProfile(int profileId);
-    boolean profileExists(String username, String email,String password,String cpassword,String mobilenumber,String address);
+    boolean profileExists(String username, String email,String password,String cpassword,String mobilenumber,String address,String role);
 }
  

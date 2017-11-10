@@ -17,9 +17,9 @@ public class LoginService implements ILoginService{
 
 	@Override
 	public boolean loginValidator(Profile profile) {
-		boolean res=loginDao.userExists(profile.getUsername(), profile.getPassword());
+		boolean res=loginDao.userExists(profile.getUsername(), profile.getPassword(), profile.getRole());
 		System.out.println("sss"+res);
-		if(loginDao.userExists(profile.getUsername(), profile.getPassword()))
+		if(loginDao.userExists(profile.getUsername(), profile.getPassword(), profile.getRole()))
 		return true;
 		else
 		return false;

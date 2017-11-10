@@ -15,7 +15,8 @@ import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 export class LoginComponent implements OnInit {
   allusers: User[];
   statusCode: number;
-  constructor( private router: Router ,private user: UserService, private loginservice: LoginService ) { }
+  status:number
+  constructor( private router: Router ,private userservice: UserService, private loginservice: LoginService ) { }
   ngOnInit() {
     this.loginservice.getAllUserDetails().subscribe(
       users=>{
@@ -23,7 +24,11 @@ export class LoginComponent implements OnInit {
         console.log(this.allusers);
       }
     );
-  } 
+    this.statusCode=this.loginservice.getstatus();
+   /*if(this.loginservice.getstatus()==201){
+     alert("registration successfull");
+   }*/
+  }
 
 //after submiting login form control comes here
 loginUser(e){ 
@@ -43,25 +48,36 @@ console.log("this is find"+this.allusers.find(x => x.username == 'gopi'));
 
 userValidator(){
   console.log("coming to uservalidator");
-  this.loginservice.validateLogin(localStorage.getItem('username'),localStorage.getItem('password')).subscribe(
+  this.loginservice.validateLogin(localStorage.getItem('username'),localStorage.getItem('password'),localStorage.getItem('role')).subscribe(
     status=>{
       this.statusCode=status;
+      console.log(this.statusCode);
+      console.log(localStorage.getItem('role'));
       if(status==200 && localStorage.getItem('role')==='user')
       {
+        this.loginservice.setUserLoggedIn();
+        console.log("checking user login");
        this.router.navigate (['user']);
-      }
-      else if(status==200 && localStorage.getItem('role')==='Admin')
+      }     
+      else if(status==200 && localStorage.getItem('role')==='deliver')
       {
-        this.router.navigate([''])
+        this.loginservice.setUserLoggedIn();
+        console.log("checking deliver login");
+        this.router.navigate(['deliverHome'])
       }
-      else if(status==200 && localStorage.getItem('role')==='Deliver')
+      else if(status==200 && localStorage.getItem('role')==='admin')
       {
-        this.router.navigate([''])
+        this.loginservice.setUserLoggedIn();
+        console.log("checking deliver login");
+        this.router.navigate(['adminHome'])
       }
       else
       this.router.navigate (['login']);
     },
-    errorCode => this.statusCode = errorCode
+    status =>{
+      this.statusCode =status
+      console.log(status)
+    } 
   );
 }
 

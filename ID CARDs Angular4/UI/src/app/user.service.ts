@@ -7,17 +7,9 @@ import {UserForUpdate} from './user/user.component';
 
 @Injectable()
 export class UserService {
-  private isUserLoggedIn;
   private username;
-  constructor(private http: Http) { 
-    this.isUserLoggedIn=false;
-  }
-  setUserLoggedIn(){
-    this.isUserLoggedIn=true;
-  }
-  getUserLoggedIn(){
-    return this.isUserLoggedIn;
-  }
+
+  constructor(private http: Http) {}
 
   updateUser(updatedUserDtls:  UserForUpdate):Observable<number> {
     let userHeaders = new Headers({ 'Content-Type': 'application/json' });
@@ -26,6 +18,7 @@ export class UserService {
              .map(success => success.status)
              .catch(this.handleError);
   }
+
    private handleError (error: Response | any) {
 		console.error(error.message || error);
 		return Observable.throw(error.status); 

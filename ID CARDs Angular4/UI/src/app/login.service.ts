@@ -7,8 +7,13 @@ import {environment } from '../environments/environment';
 
 @Injectable()
 export class LoginService {
-  private gotUserName;
-  constructor(private http: Http) { }
+  private isUserLoggedIn;
+  private statusForAlert;
+  
+  constructor(private http: Http) 
+  {
+    this.isUserLoggedIn=false; 
+  }
   checkUser():Observable<number> {
     let userHeaders = new Headers({ 'Content-Type': 'application/json' });
       let options = new RequestOptions({ headers: userHeaders });
@@ -20,11 +25,11 @@ export class LoginService {
      .catch(this.handleError);
   }
   //for login validation
-  validateLogin(user: string ,pass: string):Observable<number>{
+  validateLogin(user: string ,pass: string, role:string):Observable<number>{
     console.log("coming to loginservice"); 
     let userHeaders = new Headers({ 'Content-Type': 'application/json' });
     let options = new RequestOptions({ headers: userHeaders });
-    return this.http.post(environment.validateLogin, { username: user, password: pass },options)
+    return this.http.post(environment.validateLogin, { username: user, password: pass, role: role },options)
     .map(success => success.status).catch(this.handleError);
   }
   private handleError (error: Response | any) {
@@ -42,4 +47,18 @@ export class LoginService {
            .map((res: Response)=>res.json())
            .catch(this.handleError);
       }
+      setstatus(stat:number){
+        this.statusForAlert=stat;
+      }
+      //registration status
+      getstatus(){
+        return this.statusForAlert;
+      }
+      setUserLoggedIn(){
+        this.isUserLoggedIn=true;
+      }
+      getUserLoggedIn(){
+        return this.isUserLoggedIn;
+      }
+      
 }

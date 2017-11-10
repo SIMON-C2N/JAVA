@@ -14,12 +14,12 @@ public class LoginDAO implements ILoginDAO{
 	@PersistenceContext	
 	private EntityManager entityManager;	
 	@Override
-	public boolean userExists(String username, String password) {
+	public boolean userExists(String username, String password, String role) {
 		System.out.println(username);
 		System.out.println(password);
-		String hql = "FROM Profile as atcl WHERE atcl.username = ? and atcl.password = ?" ;
+		String hql = "FROM Profile as check WHERE check.username = ? and check.password = ? and check.role=?";
 		int count = entityManager.createQuery(hql).setParameter(1, username)
-		              .setParameter(2, password).getResultList().size();
+		              .setParameter(2, password).setParameter(3, role).getResultList().size();
 		return count > 0 ? true : false;
 	}
 	@SuppressWarnings("unchecked")

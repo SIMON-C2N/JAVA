@@ -1,4 +1,10 @@
 <app-header></app-header>
+<div class="alert alert-danger" *ngIf="statusCode === 409">
+		UserNotExist
+</div>
+<div class="alert alert-success" *ngIf="statusCode === 201">
+		Registration
+</div>
 <div class="container">
         <div class="row"> 
 			<div class="col-md-6 col-md-offset-3">

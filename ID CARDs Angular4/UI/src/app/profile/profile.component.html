@@ -1,5 +1,5 @@
 <div class="container">
-    <button (click)="profilefor()">Generate</button>
+    <button (click)="profilefor()" onclick="this.disabled=true">Generate</button>
         <input  type="text"[(ngModel)]="formno"><br>
           <div id="fields" *ngFor="let field of fields">
               {{field.fieldName}}

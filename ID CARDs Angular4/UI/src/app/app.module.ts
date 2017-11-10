@@ -14,7 +14,6 @@ import { AdminHomeComponent } from './admin-home/admin-home.component';
 import { UserHomeComponent } from './user-home/user-home.component';
 import { DeliverHomeComponent } from './deliver-home/deliver-home.component';
 import { UserService } from './user.service';
-import { AuthguardGuard } from './authguard.guard'; 
 import { UserComponent } from './user/user.component';
 import { MyordersComponent} from './myorders/myorders.component';
 import {CustomerreceiptComponent} from './customerreceipt/customerreceipt.component';
@@ -29,31 +28,47 @@ import {MatCardModule,MatSelectModule} from '@angular/material';
 import { ProfileComponent } from './profile/profile.component';
 import { UploadfileService } from './uploadfile.service';
 import { AngularMultiSelectModule } from 'angular2-multiselect-dropdown/angular2-multiselect-dropdown';
+import { LoginGuard } from './login.guard';
 import { ProfileService } from './profile.service';
+import { DeliverService } from './deliver.service';
+import { AdminService } from './admin.service';
 
 const appRoutes: Routes = [
 { 
-  path: '', redirectTo: 'login', pathMatch: 'full'  
+  path: '', 
+  redirectTo: 'login', 
+  pathMatch: 'full'  
 },
 { 
-  path: 'login',    component: LoginComponent 
+  path: 'login',    
+  component: LoginComponent 
 },
 { 
-  path: 'register', component: RegisterComponent 
+  path: 'register', 
+  component: RegisterComponent 
 },
 {
    path: 'adminHome',
-   component: AdminHomeComponent
+   component: AdminHomeComponent,
+   canActivate:[LoginGuard]
 },
-{ path: 'deliverHome', component: DeliverHomeComponent },
-{ path: 'userHome', component: UserHomeComponent },
+{ 
+  path: 'deliverHome', 
+  component: DeliverHomeComponent,
+  canActivate:[LoginGuard]
+},
+{ 
+  path: 'userHome', 
+  component: UserHomeComponent 
+},
 {
   path: 'userHome',
   component: UserHomeComponent
 },
  {
-   path: 'user',
-   component: UserComponent
+   path: 'user',   
+   component: UserComponent,
+   canActivate:[LoginGuard]
  },
 {
   path: 'Home',
@@ -114,14 +129,16 @@ const appRoutes: Routes = [
     AngularMultiSelectModule,
     RouterModule.forRoot(  appRoutes, { enableTracing: true }  )
   ],
-  providers: [ 
+  providers: [     
+    LoginGuard,
     UserService,
-    AuthguardGuard,
     RegisterService, 
     LoginService, 
     LoginComponent,
     UploadfileService,
-    ProfileService
+    ProfileService,
+    DeliverService,
+    AdminService
     ],
   bootstrap: [AppComponent]
 })

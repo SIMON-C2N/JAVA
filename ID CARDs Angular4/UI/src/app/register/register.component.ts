@@ -8,6 +8,7 @@ import 'rxjs/add/observable/merge';
 import 'rxjs/add/operator/map';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { LoginService } from '../login.service';
+import { Router } from '@angular/router';
 import { RegisterService } from '../register.service';
 
 export interface UserResponse{
@@ -33,7 +34,7 @@ export class Roles{
 }
 const role:Roles[]=[
 {roleName:"User"},
-{roleName:"Delivary"}
+{roleName:"Deliver"}
 ];
 
 
@@ -67,7 +68,7 @@ export class RegisterComponent implements OnInit {
     role:new FormControl('', Validators.required),
   });
   
-  constructor(private registerService: RegisterService, private loginservice: LoginService) { }
+  constructor(private router: Router,private registerService: RegisterService, private loginservice: LoginService) { }
     
       ngOnInit():void {
 /*        this.http.get<UserResponse>('https://api.github.com/users/seeschweiler').subscribe(
@@ -103,10 +104,16 @@ export class RegisterComponent implements OnInit {
         this.registerService.registerUser(user) 
         .subscribe(successCode=>{
           this.statusCode=successCode
+          if(this.statusCode==201)
+          {
+            this.router.navigate (['login']); 
+            this.loginservice.setstatus(this.statusCode);
+          }
         },
         errorCode => this.statusCode = errorCode
       );//subscribe
-      }//method
+     
+    }//method
      //Perform preliminary processing configurations
    preProcessConfigurations() {
     this.statusCode = null;

@@ -44,7 +44,7 @@ public class ProfileDAO implements IProfileDAO {
 	}
 	@Override
 	public boolean profileExists(String username, String email,String password,String cpassword,String mobilenumber,String address,String role) {
-		String hql = "FROM Profile as atcl WHERE atcl.username = ? and atcl.email = ? and atcl.passward = ? and atcl.cpassword = ? and atcl.mobilenumber = ? and atcl.address = ? and atcl.role=?" ;
+		String hql = "FROM Profile as atcl WHERE atcl.username = ? and atcl.email = ? and atcl.password = ? and atcl.cpassword = ? and atcl.mobilenumber = ? and atcl.address = ? and atcl.role=?" ;
 		int count = entityManager.createQuery(hql).setParameter(1, username)
 		              .setParameter(2, email).setParameter(3, password).setParameter(4, cpassword).setParameter(5, mobilenumber).setParameter(6 ,address).setParameter(7, role).getResultList().size();
 		return count > 0 ? true : false;

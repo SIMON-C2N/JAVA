@@ -27,7 +27,7 @@
           <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
             <button type="button" class="btn btn-warning" value="{{url?.price}}" (click)="selectedItem(url)"  data-dismiss="modal">Add TO Cart</button>
-            <button type="button" class="btn btn-primary" >Buynow</button>
+            <button type="button" class="btn btn-primary" (click)="placedOrders()">Buynow</button>
           </div>         
           
       </div>

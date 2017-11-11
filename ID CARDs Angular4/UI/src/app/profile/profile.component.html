@@ -1,24 +1,25 @@
 <div class="container">
     <button (click)="profilefor()" onclick="this.disabled=true">Generate</button>
         <input  type="text"[(ngModel)]="formno"><br>
-          <div id="fields" *ngFor="let field of fields">
+        <div id="fields" *ngFor="let field of fields">
               {{field.fieldName}}
-          </div>
-                <form [formGroup]="regForm" (ngSubmit)="profilefor()" #userForm="ngForm" method="post" role="form"
-                style="display: block;">
-                    <span *ngFor="let form of nofemps">
-                    <td><input type="text" formControlName="username" placeholder="Name" class="form-control" ></td> 
-                    <td><input type="email"   formControlName="email" placeholder="EmpID" class="form-control"></td>        
-                    <td><input type="password"  formControlName="password"  placeholder="IssuesOn" class="form-control"></td>        
-                    <td><input type="password"   formControlName="cpassword" placeholder="Address" class="form-control"></td>        
-                    <td><input type="text"   formControlName="mobilenumber" placeholder="CompanyName" class="form-control"></td>
-                    <td><input type="text" formControlName="username" placeholder="BloodGroup" class="form-control" ></td>         
-                    <td><input type="text" formControlName="username" placeholder="Phone" class="form-control" ></td>         
-                    <td><input type="email"   formControlName="email" placeholder="DOB" class="form-control"></td>        
-                    <td><input type="password"  formControlName="password"  placeholder="size" class="form-control"></td>        
-                    <td><input type="password"   formControlName="cpassword" placeholder="EmployeePic" class="form-control"></td>        
-                    <td><input type="text"   formControlName="mobilenumber" placeholder="CompanyLoGo" class="form-con        tro        l"></td>        
-                    </span>       
-                </form>          
+        </div>
+        <form [formGroup]="regEmpForm" (ngSubmit)="multiformController()" #userForm="ngForm" method="post" role="form" style="display: block;">
+            <span *ngFor="let form of nofemps">
+               <td><input type="text" formControlName="name" placeholder="Name" class="form-control" ></td> 
+               <td><input type="email"   formControlName="employeeid" placeholder="EmpID" class="form-control"></td>        
+               <td><input type="password"  formControlName="issuedDate"  placeholder="IssuesOn" class="form-control"></td>        
+               <td><input type="password"   formControlName="address" placeholder="Address" class="form-control"></td>        
+               <td><input type="text"   formControlName="companyName" placeholder="CompanyName" class="form-control"></td>
+               <td><input type="text" formControlName="bloodGroup" placeholder="BloodGroup" class="form-control" ></td>         
+               <td><input type="text" formControlName="contactNumber" placeholder="Phone" class="form-control" ></td>         
+               <td><input type="email"   formControlName="dob" placeholder="DOB" class="form-control"></td>        
+               <td><input type="password"  formControlName="size"  placeholder="size" class="form-control"></td>        
+               <td><input type="password"   formControlName="employeeImage" placeholder="EmployeePic" class="form-control"></td>        
+               <td><input type="text"   formControlName="companylogo" placeholder="CompanyLoGo" class="form-control"></td>        
+               <input type="submit" value="Submit" id="form">
+            </span>
+            <input type="submit" value="Submit" id="form">
+        </form>          
 </div>
 

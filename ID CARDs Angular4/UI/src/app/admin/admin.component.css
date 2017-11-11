@@ -1,0 +1,12 @@
+.fullpage{
+ 
+}
+#tabs{
+    display: inline;
+    padding: 2px;
+    border-radius: 20px;
+    font-size: 20px;
+    cursor: pointer;
+   
+    
+}

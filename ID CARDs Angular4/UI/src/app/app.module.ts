@@ -12,7 +12,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { FormsModule, FormGroup, FormBuilder, Validators, FormControl, ReactiveFormsModule } from '@angular/forms';
 import { AdminHomeComponent } from './admin-home/admin-home.component';
 import { UserHomeComponent } from './user-home/user-home.component';
-import { DeliverHomeComponent } from './deliver-home/deliver-home.component';
+import { DeliverHomeComponent } from './Delivery/deliver-home/deliver-home.component';
 import { UserService } from './user.service';
 import { UserComponent } from './user/user.component';
 import { MyordersComponent} from './myorders/myorders.component';
@@ -32,6 +32,10 @@ import { LoginGuard } from './login.guard';
 import { ProfileService } from './profile.service';
 import { DeliverService } from './deliver.service';
 import { AdminService } from './admin.service';
+import { AdminComponent } from './admin/admin.component';
+import { DeliverComponent } from './Delivery/deliver/deliver.component';
+import { OrdersComponent } from './orders/orders.component';
+import { TrackdelivarablesComponent } from './trackdelivarables/trackdelivarables.component';
 
 const appRoutes: Routes = [
 { 
@@ -48,27 +52,24 @@ const appRoutes: Routes = [
   component: RegisterComponent 
 },
 {
-   path: 'adminHome',
+  path: 'admin',
+  component: AdminComponent,
+  //canActivate:[LoginGuard]
+},
+{
+   path: 'AdminHome',
    component: AdminHomeComponent,
-   canActivate:[LoginGuard]
+   //canActivate:[LoginGuard]
 },
 { 
   path: 'deliverHome', 
   component: DeliverHomeComponent,
-  canActivate:[LoginGuard]
-},
-{ 
-  path: 'userHome', 
-  component: UserHomeComponent 
+  //canActivate:[LoginGuard]
 },
 {
-  path: 'userHome',
-  component: UserHomeComponent
-},
- {
    path: 'user',   
    component: UserComponent,
-   canActivate:[LoginGuard]
+   //canActivate:[LoginGuard]
  },
 {
   path: 'Home',
@@ -97,8 +98,23 @@ const appRoutes: Routes = [
 {
   path:'profile',
   component:ProfileComponent
+},
+{
+  path:'deliver',
+  component:DeliverComponent
+},
+{
+  path:'OrdersPlaced',
+  component:OrdersComponent
+},
+{
+  path:'TrackDelivarables',
+  component:TrackdelivarablesComponent
 }
-  ]; @NgModule({
+
+]; 
+  
+  @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
@@ -115,7 +131,11 @@ const appRoutes: Routes = [
    IdcardselectionComponent,
    DbComponent,
    CartComponent,
-   ProfileComponent
+   ProfileComponent,
+   AdminComponent,
+   DeliverComponent,
+   OrdersComponent,
+   TrackdelivarablesComponent
  ],
   imports: [
     HttpModule,

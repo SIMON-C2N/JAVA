@@ -27,16 +27,35 @@ const field:IdFields[]=[
 {fieldName:"CompanyLOGO"}
 ];
 
-export class User{
-  constructor(
-      public username: string, 
-      public email: string,
-      public password: string,
-      public cpassword: string,
-      public mobilenumber: string,
-      public address:string) { 
-     }
+export interface IEmps{
+  name:string;
+  employeeid:string;
+  issuedDate:string,
+  address:string,
+  companyName:string,
+  bloodGroup:string,
+  contactNumber:string,
+  dob:string,
+  size:string,
+  employeeImage:string,
+  companylogo:string 
 }
+
+export class Emps{
+  constructor(
+     public name:string,
+     public employeeid:string,
+     public issuedDate:string,
+     public address:string,
+     public companyName:string,
+     public bloodGroup:string,
+     public contactNumber:string,
+     public dob:string,
+     public size:string,
+     public employeeImage:string,
+     public companylogo:string) {}
+}
+
 
 
 @Component({
@@ -45,19 +64,25 @@ export class User{
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
-  user:User[];
+  emp:Emps;
+  emps:IEmps[];
   i
   formno
   nofemps:number[];
   formcount=forms;
   fields=field;
-  regForm = new FormGroup({
-    username: new FormControl('',  Validators.required),
-    email:new FormControl('', Validators.required),
-    password:new FormControl('', Validators.required),
-    cpassword:new FormControl('', Validators.required),
-    mobilenumber:new FormControl('', Validators.required),
-    address:new FormControl('', Validators.required)
+  regEmpForm = new FormGroup({
+    name: new FormControl('',  Validators.required),
+    employeeid:new FormControl('', Validators.required),
+    issuedDate:new FormControl('', Validators.required),
+    address:new FormControl('', Validators.required),
+    companyName:new FormControl('', Validators.required),
+    bloodGroup:new FormControl('', Validators.required),
+    contactNumber:new FormControl('', Validators.required),
+    dob:new FormControl('', Validators.required),
+    size:new FormControl('', Validators.required),
+    employeeImage:new FormControl('', Validators.required),
+    companylogo:new FormControl('', Validators.required),
   });
   constructor() { }
 
@@ -68,6 +93,26 @@ export class ProfileComponent implements OnInit {
     for(this.i=0;this.i<=this.formno;this.i++){  
       this.nofemps=Array(this.i);
       console.log(this.nofemps)   
-    }    
+    }//end of for
+    
   }
+  multiformController(){
+    console.log("coming");
+    for(this.i=0;this.i<=this.formno;this.i++){
+      console.log("Entered to for loop");
+      let name = this.regEmpForm.get('name').value;
+      let employeeid = this.regEmpForm.get('employeeid').value;
+      let issuedDate = this.regEmpForm.get('issuedDate').value;
+      let address = this.regEmpForm.get('address').value;
+      let companyName = this.regEmpForm.get('companyName').value;
+      let bloodGroup = this.regEmpForm.get('bloodGroup').value;
+      let contactNumber = this.regEmpForm.get('contactNumber').value;
+      let dob = this.regEmpForm.get('dob').value;
+      let size = this.regEmpForm.get('size').value;
+      let employeeImage = this.regEmpForm.get('employeeImage').value;
+      let companylogo = this.regEmpForm.get('companylogo').value;
+      this.emps= Array(new Emps(name,employeeid,issuedDate,address,companyName,bloodGroup,contactNumber,dob,size,employeeImage,companylogo))
+    }   
+    console.log(this.emps);
+    }
 }

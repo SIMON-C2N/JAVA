@@ -122,7 +122,7 @@ this.selectedItems = [
         {"id":4,"itemName":"Canada"},
         {"id":5,"itemName":"South Korea"}
     ];
-this.dropdownSettings = { 
+this.dropdownSettings = {
           singleSelection: false, 
           text:"Select Countries",
           selectAllText:'Select All',
@@ -142,9 +142,14 @@ showCheckboxes(){
   console.log("coming to here");
 }
 profilefor(){
-  for(this.i=0;this.i<=this.formno;this.i++){  
+  for(this.i=0;this.i<=this.formno;this.i++){
     this.nofemps=Array(this.i);
     console.log(this.nofemps)   
   }    
 }
+//for placed orders
+placedOrders(ordeid:string){
+  console.log("coming");
+}
+
 }

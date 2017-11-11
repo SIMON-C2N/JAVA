@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { UserService} from '../user.service';
+import {UserService} from '../user.service';
+
 @Component({
   selector: 'app-admin-home',
   templateUrl: './admin-home.component.html',
@@ -7,9 +8,10 @@ import { UserService} from '../user.service';
 })
 export class AdminHomeComponent implements OnInit {
 
-  constructor( private user : UserService) { }
+  constructor() { }
 
   ngOnInit() {
+    
   }
 
 }

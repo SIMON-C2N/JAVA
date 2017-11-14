@@ -34,10 +34,10 @@ public class IdcardController {
        
 		System.out.println(idcard);
 		
-		//boolean flag = idcardService.createIdcard(idcard);
-       /* if (flag == false) {
+		boolean flag = idcardService.createIdcard(idcard);
+       if (flag == false) {
         	return new ResponseEntity<Void>(HttpStatus.CONFLICT);
-        }*/
+       }
         HttpHeaders headers = new HttpHeaders();
         headers.setLocation(builder.path("/idcard?id={id}").buildAndExpand(idcard.getId()).toUri());
         return new ResponseEntity<Void>(headers, HttpStatus.CREATED);

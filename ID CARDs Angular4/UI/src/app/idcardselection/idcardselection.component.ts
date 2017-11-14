@@ -1,43 +1,55 @@
 import {Component, OnInit} from '@angular/core';
 import { Router } from '@angular/router';
-
-
+import { FormControl, FormGroup, Validators, FormsModule } from '@angular/forms';
+import { NgModule } from '@angular/core';
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/operator/startWith';
+import 'rxjs/add/observable/merge';
+import 'rxjs/add/operator/map';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { ViewChild } from '@angular/core';
+import { IdsubmitService  } from '../idsubmit.service';
+import {Headers, Http} from '@angular/http';
 
 export class TemplateMenu {
   imgurl: String;
 }
-export class NameChooser{
-  nametype: string;
+export class Product { 
+  constructor ( 
+     public productid: number, 
+     
+  ) {  } 
 }
-export class ValidityChooser{
-  issuedType: string;
+export class Forms{
+  fname:string;
+}
+ 
+export class iddetails{
+  [x: string]: any;
+
+  constructor(
+    public name: string,
+    public empid: string,
+    public issueddate: string,
+    public address: string,
+    public companyname : string,
+    public bloodgroup : string ,
+    public mobilenumber : string ,
+    public dob : string ,
+    public size : string ,
+    public userimage :File
+   
+  ) {  }
+
+
 }
 
-const chooseName: NameChooser[] = [
- {nametype:'FirstName'},
- {nametype:'SecondName'},
- {nametype:'FullName'}
-];
 
-const chooseVallidityType:ValidityChooser[]=[
-  {issuedType:'issueBy'},
-  {issuedType:'endBy'}
-];
-export class IdFields{
-  fieldName:string;
-}
-const field:IdFields[]=[
-{fieldName:"Name"},
-{fieldName:"EmployeeId"},
-{fieldName:"IssuedDate"},
-{fieldName:"Address"},
-{fieldName:"CompanyName"},
-{fieldName:"BloodGroup"},
-{fieldName:"ContactNumber"},
-{fieldName:"DOB"},
-{fieldName:"Size"},
-{fieldName:"EmployeeImage"},
-{fieldName:"CompanyLOGO"}
+const forms:Forms[]=[
+  {fname:"form1"},
+  {fname:"form1"},
+  {fname:"form1"},  
 ];
 
 
@@ -48,28 +60,31 @@ const field:IdFields[]=[
 })
 
 export class IdcardselectionComponent implements OnInit {
-  dropdownList = [];
-  selectedItems = [];
-  dropdownSettings = {};
-  nameTypes=chooseName;
-  validityCooser=chooseVallidityType;
+
+  model = new Product(1);
+  nofemps:number[];
+  formcount=forms;
   url
+  formno
+  i
+ 
   product
   price
-  i
-  formno
-  nofemps:number[];
-  fields=field;
+  productid
   sizes: string[] = [
     'ID-1: 3.370 x 2.125 in (85.60 x 53.98 mm)',
     'ID-2: 4.134 x 2.913 in (105 x 74mm)'
+    
   ]
+
   public cart=[];
   public recentProduct="None";
-  
-  constructor(private router: Router) {}
-  
-  
+  constructor(private router: Router,private idcardService: IdsubmitService,private http: Http) {}
+  public employee=[];
+  UserImageFile:File;
+  @ViewChild('UserImage') User_Image;
+
+
   public  productList=[
   {"id":"idcard1","price":50,"imageURL":'template001',"size1":'ID-1: 3.370 x 2.125 in (85.60 x 53.98 mm)',"size2":'ID-2: 4.134 x 2.913 in (105 x 74mm)'}, 
   {"id":"idcard2","price":50,"imageURL":'template002',"size1":'ID-1: 3.370 x 2.125 in (85.60 x 53.98 mm)',"size2":'ID-2: 4.134 x 2.913 in (105 x 74mm)'},
@@ -83,12 +98,24 @@ export class IdcardselectionComponent implements OnInit {
   {"id":"idcard10","price":90,"imageURL":'template010',"size1":'ID-1: 3.370 x 2.125 in (85.60 x 53.98 mm)',"size2":'ID-2: 4.134 x 2.913 in (105 x 74mm)'}];
   
   
-  
+  fakeArrays = new Array(3);
+  statusCode: number;
+  requestProcessing = false; 
+  profileIdToUpdate = null;
+  processValidation = false;
   selectedProduct(product){
    this.url=product;
   } 
   
-  
+  clicked(productid){
+
+    this.employee.push(this.productid);  
+// for(var i=0;i<this.productid;i++){
+
+// console.log("hai");
+// }
+
+  }
    
    selectedItem(url){
     this.cart.push(this.url.id);
@@ -101,55 +128,77 @@ export class IdcardselectionComponent implements OnInit {
     this.url=temp.imgurl;
     console.log("coming");
   }
+  profilefor(){
+    for(this.i=0;this.i<=this.formno;this.i++){  
+      this.nofemps=Array(this.i);
+      console.log(this.nofemps)   
+    }  
+  }
+  
+idForm = new FormGroup({
+   name: new FormControl('',  Validators.required),
+   empid:new FormControl('', Validators.required),
+    issueddate:new FormControl('', Validators.required),
+    address:new FormControl('', Validators.required),
+    companyname:new FormControl('', Validators.required),
+    bloodgroup: new FormControl('',  Validators.required),
+    mobilenumber: new FormControl('',  Validators.required),
+    dob: new FormControl('',  Validators.required),
+    size: new FormControl('',  Validators.required),
+    UserImage: new FormControl('',  Validators.required)  });
+
+ idsubmit(value){
+   for(this.i=0;this.i<this.formno;this.i++){
+    let name = this.idForm.get('name').value;
+    let empid=this.idForm.get('empid').value;
+    let issueddate=this.idForm.get('issueddate').value;
+    let address =this.idForm.get('address').value;
+    let companyname =this.idForm.get('companyname').value;
+    let bloodgroup =this.idForm.get('bloodgroup').value;
+    let mobilenumber=this.idForm.get('mobilenumber').value;
+    let dob=this.idForm.get('dob').value;
+    let size=this.idForm.get('size').value;
+    const Image=this.User_Image.nativeElement;
+    if(Image.files && Image.files[0]){
+      this.UserImageFile=Image.files[0];
+    }
+    const ImageFile:File=this.UserImageFile;
+    
+    
+    let user = new iddetails(name,empid,issueddate,address,companyname,bloodgroup,mobilenumber,dob,size,ImageFile);
  
   
-  ngOnInit() {
-    this.dropdownList = [
-      {"id":1,"itemName":"India"},
-      {"id":2,"itemName":"Singapore"},
-      {"id":3,"itemName":"Australia"},
-      {"id":4,"itemName":"Canada"},
-      {"id":5,"itemName":"South Korea"},
-      {"id":6,"itemName":"Germany"},
-      {"id":7,"itemName":"France"},
-      {"id":8,"itemName":"Russia"},
-      {"id":9,"itemName":"Italy"},
-      {"id":10,"itemName":"Sweden"}
-    ];
-this.selectedItems = [
-        {"id":2,"itemName":"Singapore"},
-        {"id":3,"itemName":"Australia"},
-        {"id":4,"itemName":"Canada"},
-        {"id":5,"itemName":"South Korea"}
-    ];
-this.dropdownSettings = {
-          singleSelection: false, 
-          text:"Select Countries",
-          selectAllText:'Select All',
-          unSelectAllText:'UnSelect All',
-          enableSearchFilter: true
-        };            
-  }
-  onItemSelect(item){
-    console.log('Selected Item:');
-    console.log(item);
-}
-OnItemDeSelect(item){
-    console.log('De-Selected Item:');
-    console.log(item);
-}
-showCheckboxes(){
-  console.log("coming to here");
-}
-profilefor(){
-  for(this.i=0;this.i<=this.formno;this.i++){
-    this.nofemps=Array(this.i);
-    console.log(this.nofemps)   
-  }    
-}
-//for placed orders
-placedOrders(ordeid:string){
-  console.log("coming");
+    
+    console.log(user);
+
+  
+
+ this.idcardService.registerUser(user) 
+ .subscribe(successCode=>{
+   this.statusCode=successCode
+ },
+ errorCode => this.statusCode = errorCode
+);//subscribe
 }
 
+ }
+//method
+//Perform preliminary processing configurations
+preProcessConfigurations() {
+this.statusCode = null;
+this.requestProcessing = true;   
 }
+
+
+
+
+ngOnInit() {
+  
+}
+
+
+ }
+
+
+
+

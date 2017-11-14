@@ -21,6 +21,7 @@ import { IdcardselectionComponent } from './idcardselection/idcardselection.comp
 import {SaveddetailsComponent} from './saveddetails/saveddetails.component';
 import { DbComponent } from './db/db.component';
 import { RegisterService } from './register.service';
+import { IdsubmitService } from './idsubmit.service';
 import { LoginService } from './login.service';
 import { CartComponent } from './cart/cart.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
@@ -158,7 +159,8 @@ const appRoutes: Routes = [
     UploadfileService,
     ProfileService,
     DeliverService,
-    AdminService
+    AdminService,
+    IdsubmitService
     ],
   bootstrap: [AppComponent]
 })

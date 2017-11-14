@@ -32,8 +32,7 @@ public class idcardDAO implements IidcardDAO{
 	@Override
 	public void createIdcard(Idcard idcard) {
 		System.out.println("hello");
-		entityManager.persist(idcard);
-		
+		entityManager.persist(idcard);		
 	}
 
 	@Override

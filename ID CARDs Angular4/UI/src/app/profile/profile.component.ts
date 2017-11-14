@@ -90,7 +90,7 @@ export class ProfileComponent implements OnInit {
       
   }
   profilefor(){
-    for(this.i=0;this.i<=this.formno;this.i++){  
+    for(this.i=0;this.i<=this.formno;this.i++){
       this.nofemps=Array(this.i);
       console.log(this.nofemps)   
     }//end of for

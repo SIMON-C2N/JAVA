@@ -4,8 +4,9 @@
         <div id="fields" *ngFor="let field of fields">
               {{field.fieldName}}
         </div>
-        <form [formGroup]="regEmpForm" (ngSubmit)="multiformController()" #userForm="ngForm" method="post" role="form" style="display: block;">
-            <span *ngFor="let form of nofemps">
+        <span *ngFor="let form of nofemps">
+                {{nofemps.length}}
+        <form [formGroup]="regEmpForm" (ngSubmit)="multiformController()" #userForm="ngForm" method="post" role="form" style="display: block;" id={{nofemps.length}}>
                <td><input type="text" formControlName="name" placeholder="Name" class="form-control" ></td> 
                <td><input type="email"   formControlName="employeeid" placeholder="EmpID" class="form-control"></td>        
                <td><input type="password"  formControlName="issuedDate"  placeholder="IssuesOn" class="form-control"></td>        
@@ -17,9 +18,8 @@
                <td><input type="password"  formControlName="size"  placeholder="size" class="form-control"></td>        
                <td><input type="password"   formControlName="employeeImage" placeholder="EmployeePic" class="form-control"></td>        
                <td><input type="text"   formControlName="companylogo" placeholder="CompanyLoGo" class="form-control"></td>        
-               <input type="submit" value="Submit" id="form">
-            </span>
-            <input type="submit" value="Submit" id="form">
-        </form>          
+               <input type="submit" value="Submit">
+        </form>     
+    </span>    
 </div>
 

@@ -46,30 +46,30 @@ public class Idcard {
 	@Column(name="size")	
 	private String size; 
 
-	
-	/*@Column(name="userimage")
-private byte[] userimage;
-	
-
-
+	@Column(name="userimage")
+	private String userimage;
 
 	
-
-	public byte[] getUserimage() {
+	public String getUserimage() {
 		return userimage;
 	}
 
-	public void setUserimage(byte[] userimage) {
+
+	public void setUserimage(String userimage) {
 		this.userimage = userimage;
 	}
-*/
+
+
+	//tostring
 	@Override
 	public String toString() {
 		return "Idcard [id=" + id + ", name=" + name + ", address=" + address + ", bloodgroup=" + bloodgroup
 				+ ", companyname=" + companyname + ", dob=" + dob + ", empid=" + empid + ", issueddate=" + issueddate
 				+ ", mobilenumber=" + mobilenumber + ", size=" + size + "]";
 	}
-
+	
+	
+	//setters and getters
 	public int getId() {
 		return id;
 	}
@@ -93,19 +93,9 @@ private byte[] userimage;
 	public void setAddress(String address) {
 		this.address = address;
 	}
-
-	
-
-	/**
-	 * @return the bloodgroup
-	 */
 	public String getBloodgroup() {
 		return bloodgroup;
 	}
-
-	/**
-	 * @param bloodgroup the bloodgroup to set
-	 */
 	public void setBloodgroup(String bloodgroup) {
 		this.bloodgroup = bloodgroup;
 	}
@@ -157,6 +147,5 @@ private byte[] userimage;
 	public void setSize(String size) {
 		this.size = size;
 	}
-
 	
 }

@@ -12,5 +12,5 @@ public interface IidcardDAO {
     void createIdcard(Idcard idcard);
     void updateIdcard(Idcard idcard);
     void deleteIdcard(int idcardId);
-    boolean idcardExists(String address,String bloodgroup,String companyname,String dob,String empid,String issueddate,String mobilenumber,String name,String size);
+    boolean idcardExists(String address,String bloodgroup,String companyname,String dob,String empid,String issueddate,String mobilenumber,String name,String size, String userimage);
 }

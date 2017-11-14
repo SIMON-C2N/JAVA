@@ -71,6 +71,8 @@ export class ProfileComponent implements OnInit {
   nofemps:number[];
   formcount=forms;
   fields=field;
+  mytext
+  myfile
   regEmpForm = new FormGroup({
     name: new FormControl('',  Validators.required),
     employeeid:new FormControl('', Validators.required),
@@ -87,7 +89,7 @@ export class ProfileComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-      
+    
   }
   profilefor(){
     for(this.i=0;this.i<=this.formno;this.i++){
@@ -114,5 +116,9 @@ export class ProfileComponent implements OnInit {
       this.emps= Array(new Emps(name,employeeid,issuedDate,address,companyName,bloodGroup,contactNumber,dob,size,employeeImage,companylogo))
     }   
     console.log(this.emps);
+    }
+    myFunction(){
+      alert(this.myfile)
+      alert(this.mytext)
     }
 }

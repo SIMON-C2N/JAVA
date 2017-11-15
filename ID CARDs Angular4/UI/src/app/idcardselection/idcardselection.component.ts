@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import { Router } from '@angular/router';
 import { FormControl, FormGroup, Validators, FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
@@ -8,7 +8,6 @@ import 'rxjs/add/operator/startWith';
 import 'rxjs/add/observable/merge';
 import 'rxjs/add/operator/map';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { ViewChild } from '@angular/core';
 import { IdsubmitService  } from '../idsubmit.service';
 import {Headers, Http} from '@angular/http';
 
@@ -26,8 +25,6 @@ export class Forms{
 }
  
 export class iddetails{
-  [x: string]: any;
-
   constructor(
     public name: string,
     public empid: string,
@@ -38,13 +35,9 @@ export class iddetails{
     public mobilenumber : string ,
     public dob : string ,
     public size : string ,
-    public userimage :File
-   
-  ) {  }
-
-
+    public userimage:string
+   ) { }
 }
-
 
 const forms:Forms[]=[
   {fname:"form1"},
@@ -67,23 +60,21 @@ export class IdcardselectionComponent implements OnInit {
   url
   formno
   i
- 
+ userImage:File;
+ @ViewChild('companylogo') logo;
   product
   price
   productid
+  companylogo
   sizes: string[] = [
     'ID-1: 3.370 x 2.125 in (85.60 x 53.98 mm)',
     'ID-2: 4.134 x 2.913 in (105 x 74mm)'
-    
   ]
 
   public cart=[];
   public recentProduct="None";
   constructor(private router: Router,private idcardService: IdsubmitService,private http: Http) {}
   public employee=[];
-  UserImageFile:File;
-  @ViewChild('UserImage') User_Image;
-
 
   public  productList=[
   {"id":"idcard1","price":50,"imageURL":'template001',"size1":'ID-1: 3.370 x 2.125 in (85.60 x 53.98 mm)',"size2":'ID-2: 4.134 x 2.913 in (105 x 74mm)'}, 
@@ -148,6 +139,7 @@ idForm = new FormGroup({
     UserImage: new FormControl('',  Validators.required)  });
 
  idsubmit(value){
+  this.companylogo=this.logo.nativeElement;
    for(this.i=0;this.i<this.formno;this.i++){
     let name = this.idForm.get('name').value;
     let empid=this.idForm.get('empid').value;
@@ -157,24 +149,12 @@ idForm = new FormGroup({
     let bloodgroup =this.idForm.get('bloodgroup').value;
     let mobilenumber=this.idForm.get('mobilenumber').value;
     let dob=this.idForm.get('dob').value;
-    let size=this.idForm.get('size').value;
-    const Image=this.User_Image.nativeElement;
-    if(Image.files && Image.files[0]){
-      this.UserImageFile=Image.files[0];
-    }
-    const ImageFile:File=this.UserImageFile;
-    
-    
-    let user = new iddetails(name,empid,issueddate,address,companyname,bloodgroup,mobilenumber,dob,size,ImageFile);
- 
-  
-    
+    let size=this.idForm.get('size').value;    
+    let user = new iddetails(name,empid,issueddate,address,companyname,bloodgroup,mobilenumber,dob,size,this.companylogo.value);
     console.log(user);
 
-  
-
- this.idcardService.registerUser(user) 
- .subscribe(successCode=>{
+    this.idcardService.registerUser(user) 
+    .subscribe(successCode=>{
    this.statusCode=successCode
  },
  errorCode => this.statusCode = errorCode
@@ -188,16 +168,9 @@ preProcessConfigurations() {
 this.statusCode = null;
 this.requestProcessing = true;   
 }
-
-
-
-
 ngOnInit() {
-  
 }
-
-
- }
+}
 
 
 

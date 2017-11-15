@@ -17,15 +17,12 @@
                <td><input type="email"   formControlName="dob" placeholder="DOB" class="form-control"></td>        
                <td><input type="password"  formControlName="size"  placeholder="size" class="form-control"></td>        
                <td><input type="password"   formControlName="employeeImage" placeholder="EmployeePic" class="form-control"></td>        
-               <td><input type="text"   formControlName="companylogo" placeholder="CompanyLoGo" class="form-control"></td>        
+               <td><input type="file"   formControlName="companylogo" placeholder="CompanyLoGo" #companylogo class="form-control"></td>        
                <input type="submit" value="Submit">
         </form>     
     </span>    
 </div>
-<input type="text" [(ngModel)]="mytext">{{mytext}}
-<input type="file" [(ngModel)]="myfile">{{myfile}}
-<button (click)="myFunction()">Try it</button>
-this is myfile::{{myfile}}{{mytext}}
+
 
 
 

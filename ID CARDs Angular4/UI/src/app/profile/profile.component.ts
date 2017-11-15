@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators, FormsModule } from '@angular/forms';
 
 export class Forms{
@@ -71,8 +71,8 @@ export class ProfileComponent implements OnInit {
   nofemps:number[];
   formcount=forms;
   fields=field;
-  mytext
-  myfile
+  companylogofile:File;
+  @ViewChild('companylogo') logo;
   regEmpForm = new FormGroup({
     name: new FormControl('',  Validators.required),
     employeeid:new FormControl('', Validators.required),
@@ -86,6 +86,7 @@ export class ProfileComponent implements OnInit {
     employeeImage:new FormControl('', Validators.required),
     companylogo:new FormControl('', Validators.required),
   });
+  companylogo
   constructor() { }
 
   ngOnInit() {
@@ -100,6 +101,7 @@ export class ProfileComponent implements OnInit {
   }
   multiformController(){
     console.log("coming");
+    this.companylogo=this.logo.nativeElement;
     for(this.i=0;this.i<=this.formno;this.i++){
       console.log("Entered to for loop");
       let name = this.regEmpForm.get('name').value;
@@ -112,13 +114,9 @@ export class ProfileComponent implements OnInit {
       let dob = this.regEmpForm.get('dob').value;
       let size = this.regEmpForm.get('size').value;
       let employeeImage = this.regEmpForm.get('employeeImage').value;
-      let companylogo = this.regEmpForm.get('companylogo').value;
-      this.emps= Array(new Emps(name,employeeid,issuedDate,address,companyName,bloodGroup,contactNumber,dob,size,employeeImage,companylogo))
+      this.emps= Array(new Emps(name,employeeid,issuedDate,address,companyName,bloodGroup,contactNumber,dob,size,employeeImage,this.companylogo.value))
     }   
     console.log(this.emps);
     }
-    myFunction(){
-      alert(this.myfile)
-      alert(this.mytext)
-    }
+    
 }

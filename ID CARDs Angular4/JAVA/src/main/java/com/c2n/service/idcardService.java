@@ -15,9 +15,6 @@ import com.c2n.entity.userimage;
 
 @Service
 public class idcardService  implements IidcardService {
-	
-
-
 	@Autowired
 	private IidcardDAO idcardDAO;
 
@@ -41,6 +38,7 @@ public class idcardService  implements IidcardService {
 	       } else {
 	    	   System.out.println(idcard.getDob());
 	    	   System.out.println(idcard.getMobilenumber());
+	    	   System.out.println("sssssssssssssssssssss"+idcard.getUserimage());
 	    	   idcardDAO.createIdcard(idcard);
 	    	   return true;
 	       }

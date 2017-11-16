@@ -1,5 +1,32 @@
 
+<style>
+ .form-control {
+    display: block;
+    width: 107%;
+    height: 36px;
+    padding: 3px 6px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #555;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+    -webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
+    -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+}
 
+
+input[type=date].form-control{
+  width: 107%;
+    height: 36px;
+    padding: 3px 6px;
+    font-size: 10px;
+}
+</style>
 
 
 <div [formGroup]="adressForm">
@@ -15,7 +42,8 @@
               <th>ContactNumber</th>
               <th>Dob</th>
               <th>Size</th>
-              
+              <th>userimage</th>
+              <th>companylogo</th>
               
           </tr> 
         
@@ -24,7 +52,8 @@
     
         <tbody>
           <tr>
-              <td><input type="text"    required   placeholder="name" formControlName="name"  class="form-control"></td>
+              <td>
+                <input type="text"   class="col-xs-2" required   placeholder="name" formControlName="name"  class="form-control"></td>
               <td><input type="text" required  placeholder="EmployeeId"  formControlName="empid" class="form-control"></td>
                 <td><input type="date" required  placeholder="Issued Date"  formControlName="issueddate" class="form-control"></td>
                   <td><input type="text" required  placeholder="Address" formControlName="address" class="form-control"></td>
@@ -38,6 +67,9 @@
                                        <option value=" 3.370 x 2.125 in (85.60 x 53.98 mm)">size1</option>
                                         <option value="4.134 x 2.913 in (105 x 74mm)">size2</option>
                                                 </select></td>
+                                                <td><input type="file"    required    formControlName="userimage" #userimage  class="form-control"></td>
+                                                <td><input type="file"    required  formControlName="companylogo"  #companylogo class="form-control"></td>
+                                                
                                       
           </tr>             
         </tbody>

@@ -12,7 +12,9 @@ export interface Address {
      bloodgroup : string ,
       mobilenumber : string ,
       dob : string ,
-      size : string 
+      size : string ,
+      userimage: File,
+      comapanylogo:File
 }
 
 

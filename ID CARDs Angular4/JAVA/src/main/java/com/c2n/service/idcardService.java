@@ -15,9 +15,6 @@ import com.c2n.entity.userimage;
 
 @Service
 public class idcardService  implements IidcardService {
-	
-
-
 	@Autowired
 	private IidcardDAO idcardDAO;
 
@@ -35,12 +32,13 @@ public class idcardService  implements IidcardService {
 
 	@Override
 	public boolean createIdcard(Idcard idcard) {
-		if (idcardDAO.idcardExists(idcard.getAddress(),idcard.getBloodgroup(),idcard.getCompanyname(),idcard.getDob(),idcard.getEmpid(),idcard.getIssueddate(),idcard.getMobilenumber(),idcard.getName(),idcard.getSize())) {
-	    	System.out.println(idcard.getAddress());  
+		if (idcardDAO.idcardExists(idcard.getAddress(),idcard.getBloodgroup(),idcard.getCompanyname(),idcard.getDob(),idcard.getEmpid(),idcard.getIssueddate(),idcard.getMobilenumber(),idcard.getName(),idcard.getSize(),idcard.getUserimage())) {
+	    	System.out.println(idcard.getUserimage());  
 			return false;
 	       } else {
 	    	   System.out.println(idcard.getDob());
 	    	   System.out.println(idcard.getMobilenumber());
+	    	   System.out.println("sssssssssssssssssssss"+idcard.getUserimage());
 	    	   idcardDAO.createIdcard(idcard);
 	    	   return true;
 	       }

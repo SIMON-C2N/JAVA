@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import { Router } from '@angular/router';
 import { FormControl, FormGroup,FormArray, Validators, FormsModule,FormBuilder } from '@angular/forms';
 import { NgModule } from '@angular/core';
@@ -8,7 +8,6 @@ import 'rxjs/add/operator/startWith';
 import 'rxjs/add/observable/merge';
 import 'rxjs/add/operator/map';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { ViewChild } from '@angular/core';
 import { IdsubmitService  } from '../idsubmit.service';
 import {Headers, Http} from '@angular/http';
 import { Customer } from '../customer.interface';
@@ -26,24 +25,6 @@ export class Product {
 }
 
  
-// export class iddetails{constructor(
-//     public name: string,
-//     public empid: string,
-//     public issueddate: string,
-//     public address: string,
-//     public companyname : string,
-//     public bloodgroup : string ,
-//     public mobilenumber : string ,
-//     public dob : string ,
-//     public size : string ,
-//     public userimage :File
-   
-//   ) {  }
-
-
-// }
-
-
 
 
 
@@ -57,28 +38,28 @@ export class IdcardselectionComponent implements OnInit {
 
   model = new Product(1);
   nofemps:number[];
- 
-  url
+ url
 formno
   i
- 
+  
+ @ViewChild('companylogo') logo;
+ @ViewChild('userimage') userimage;
   product
   price
   productid
+  companylogo
   sizes: string[] = [
     'ID-1: 3.370 x 2.125 in (85.60 x 53.98 mm)',
     'ID-2: 4.134 x 2.913 in (105 x 74mm)'
-    
   ]
 
   public cart=[];
   public recentProduct="None";
   constructor(private router: Router,private idcardService: IdsubmitService,private http: Http,private _fb: FormBuilder) {}
   public employee=[];
+
   UserImageFile:File;
-  
-
-
+ 
   public  productList=[
   {"id":"idcard1","price":50,"imageURL":'template001',"size1":'ID-1: 3.370 x 2.125 in (85.60 x 53.98 mm)',"size2":'ID-2: 4.134 x 2.913 in (105 x 74mm)'}, 
   {"id":"idcard2","price":50,"imageURL":'template002',"size1":'ID-1: 3.370 x 2.125 in (85.60 x 53.98 mm)',"size2":'ID-2: 4.134 x 2.913 in (105 x 74mm)'},
@@ -123,19 +104,10 @@ formno
     console.log("coming");
   }
 profilefor(){
-
-  if(this.formno!=null){
-
-    
-
-
+if(this.formno!=null){
   for(this.i=0;this.i<this.formno;this.i++){  
-    
-    
-    this.addAddress();
-    
-
-        } }else{
+     this.addAddress();
+     } }else{
           alert("please enter  number");
         } 
             
@@ -143,59 +115,7 @@ profilefor(){
 
 
   
-// idForm = new FormGroup({
-//    name: new FormControl('',  Validators.required),
-//    empid:new FormControl('', Validators.required),
-//     issueddate:new FormControl('', Validators.required),
-//     address:new FormControl('', Validators.required),
-//     companyname:new FormControl('', Validators.required),
-//     bloodgroup: new FormControl('',  Validators.required),
-//     mobilenumber: new FormControl('',  Validators.required),
-//     dob: new FormControl('',  Validators.required),
-//     size: new FormControl('',  Validators.required),
-//     UserImage: new FormControl('',  Validators.required)  });
 
-//  idsubmit(value){
-//    for(this.i=0;this.i<this.formno;this.i++){
-//     let name = this.idForm.get('name').value;
-//     let empid=this.idForm.get('empid').value;
-//     let issueddate=this.idForm.get('issueddate').value;
-//     let address =this.idForm.get('address').value;
-//     let companyname =this.idForm.get('companyname').value;
-//     let bloodgroup =this.idForm.get('bloodgroup').value;
-//     let mobilenumber=this.idForm.get('mobilenumber').value;
-//     let dob=this.idForm.get('dob').value;
-//     let size=this.idForm.get('size').value;
-//     const Image=this.User_Image.nativeElement;
-//     if(Image.files && Image.files[0]){
-//       this.UserImageFile=Image.files[0];
-//     }
-//     const ImageFile:File=this.UserImageFile;
-    
-    
-//     let user = new iddetails(name,empid,issueddate,address,companyname,bloodgroup,mobilenumber,dob,size,ImageFile);
- 
-  
-    
-//     console.log(user);
-
-  
-
-//  this.idcardService.registerUser(user) 
-//  .subscribe(successCode=>{
-//    this.statusCode=successCode
-//  },
-//  errorCode => this.statusCode = errorCode
-// );//subscribe
-// }
-
-//  }
-//method
-//Perform preliminary processing configurations
-preProcessConfigurations() {
-this.statusCode = null;
-this.requestProcessing = true;   
-}
 
 
 public myForm: FormGroup;
@@ -207,14 +127,8 @@ public myForm: FormGroup;
            
             addresses: this._fb.array([])
         });
-        
-      
-       
-
-        
-   
-    }
-
+     }
+    
     initAddress() {
         return this._fb.group({
            
@@ -226,7 +140,9 @@ public myForm: FormGroup;
              bloodgroup:  ['', Validators.required],
              mobilenumber:  ['', Validators.required],
              dob:  ['', Validators.required],
-             size:  ['', Validators.required]
+             size:  ['', Validators.required],
+             userimage:  ['', Validators.required],
+             companylogo:  ['', Validators.required]
         });
     }
 
@@ -253,6 +169,9 @@ alert(model.addresses[0].name);
     }
 
  }
+
+
+
 
 
 

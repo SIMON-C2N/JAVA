@@ -2,6 +2,7 @@ package com.c2n.controller;
 
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import com.c2n.entity.Idcard;
@@ -29,10 +31,9 @@ public class IdcardController {
 	private IidcardService idcardService;
 	
 	@PostMapping("idcardsubmit")
-
 	public ResponseEntity<Void> createIdcard(@RequestBody Idcard idcard, UriComponentsBuilder builder) {
        
-		System.out.println(idcard);
+		
 		
 		boolean flag = idcardService.createIdcard(idcard);
        if (flag == false) {

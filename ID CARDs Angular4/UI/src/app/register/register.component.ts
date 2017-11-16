@@ -57,7 +57,7 @@ export class RegisterComponent implements OnInit {
   requestProcessing = false; 
   profileIdToUpdate = null;
   processValidation = false;
-  //create form group
+  //create form group 
   regForm = new FormGroup({
     username: new FormControl('',  Validators.required),
     email:new FormControl('', Validators.required),

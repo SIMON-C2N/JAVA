@@ -95,8 +95,8 @@ table.firstchild{
 }
 
 
-tbody {
-    height: 200px;
+.stuck {
+    height: 300px;
     display: inline-block;
     width: 100%;
     overflow: auto;

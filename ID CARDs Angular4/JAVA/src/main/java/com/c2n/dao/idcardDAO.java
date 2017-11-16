@@ -32,8 +32,7 @@ public class idcardDAO implements IidcardDAO{
 	@Override
 	public void createIdcard(Idcard idcard) {
 		System.out.println("hello");
-		entityManager.persist(idcard);
-		
+		entityManager.persist(idcard);		
 	}
 
 	@Override
@@ -49,7 +48,7 @@ public class idcardDAO implements IidcardDAO{
 	}
 
 	@Override
-	public boolean idcardExists(String address, String bloodgroup, String companyname, String dob, String empid,String issueddate, String mobilenumber, String name, String size) {
+	public boolean idcardExists(String address, String bloodgroup, String companyname, String dob, String empid,String issueddate, String mobilenumber, String name, String size, String userimage) {
 		String hql = "FROM Idcard as card WHERE card.address= ? and card.bloodgroup= ?  and card.companyname= ? and card.dob= ? and card.empid= ? and card.issueddate= ? and card.mobilenumber= ? and card.name= ? and card.size= ?  " ;
 		System.out.println(hql);
 		int count = entityManager.createQuery(hql).setParameter(1,address).setParameter(2,bloodgroup).setParameter(3,companyname).setParameter(4 ,dob).setParameter( 5, empid ).setParameter( 6, issueddate ).setParameter(7 , mobilenumber).setParameter(8 ,name).setParameter(9,size). getResultList().size();

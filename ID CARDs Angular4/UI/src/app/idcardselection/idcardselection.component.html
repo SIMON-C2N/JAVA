@@ -19,8 +19,8 @@
       
         <!-- Modal content-->
         <div class="modal-content" style="padding-bottom: 135px;
-        margin-left: 23px;
-        margin-right: 74px;    margin-top: 66px;">
+        margin-left: -40px;
+        margin-right: -40px;    margin-top: 66px;">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal">&times;</button>
             <h4  style="color:#0004FF;font-family: cursive;" class="modal-title" >{{url?.id}}</h4>
@@ -52,7 +52,7 @@
  <form [formGroup]="myForm" novalidate (ngSubmit)="save(myForm.value)">
    
                  
-    <div formArrayName="addresses">
+    <div formArrayName="addresses"  class="stuck">
         <div *ngFor="let address of myForm.controls.addresses.controls; let i=index" class="panel panel-default">
           <div class="panel-heading">
             <span>Address {{i + 1}}</span>
@@ -67,17 +67,15 @@
           <button type="submit" class="btn btn-primary pull-right" >Submit</button>
         </div>
           
+</form>
 
 
               <div class="margin-20">
                 <div>idForm details:-</div>
                 <pre>Is myForm valid?: <br>{{myForm.valid | json}}</pre>
                 <pre>form value: <br>{{myForm.value | json}}</pre>
-              </div>
-
-
-                </form>
-                </div>
+               </div>
+              
 
            
 
@@ -88,12 +86,14 @@
             <button type="button" class="btn btn-warning" value="{{url?.price}}" (click)="selectedItem(url)"  data-dismiss="modal">Add TO Cart</button>
             <button type="button" class="btn btn-primary" >Buynow</button>
           </div>
+
+
         </div>
         
       </div>
     </div>
     
-
+</div>
   
   
  

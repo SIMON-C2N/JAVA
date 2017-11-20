@@ -35,27 +35,39 @@
 									 Internal Server Error.
 								</div>								
 							  </div>
-							<form [formGroup]="regForm" (ngSubmit)="onRegFormSubmit()" #userForm="ngForm" method="post" role="form"
+							<form [formGroup]="regForm" (ngSubmit)="onRegFormSubmit()" name="regform" #userForm="ngForm" method="post" role="form"
 										style="display: block;">
 								<label>Username</label>
-								<div class="form-group" id=""> 
-									<input type="text" formControlName="username" placeholder="enter username" class="form-control" (keyup)="checkUser()" [(ngModel)]="checkuser">
+								<div class="form-group"> 
+									<input type="text" name="uname" formControlName="username"  placeholder="Enter username" class="form-control">
+									<div [hidden]="regForm.controls['username'].valid || regForm.controls['username'].pristine"
+									class="alert alert-danger"> Username is required.</div>
 								</div>
 								<label>Email</label>
 								<div class="form-group">
-									<input type="email"   formControlName="email" placeholder="Email Address" class="form-control">
+									<input type="email"  formControlName="email" placeholder="Email Address" class="form-control">
+									<div [hidden]="regForm.controls['email'].valid || regForm.controls['email'].pristine"
+									class="alert alert-danger"> Email is not valid</div>
 								</div>
 								<label>Password</label>
 								<div class="form-group">
 									<input type="password"  formControlName="password"  placeholder="Password" class="form-control">
+									<div [hidden]="regForm.controls['password'].valid || regForm.controls['password'].pristine"
+									class="alert alert-danger"> please enter password</div>
+									<!--{{regForm.controls['password'].value}}-->
 								</div>
 								<label>Confirm Password</label>
 								<div class="form-group">
 									<input type="password"   formControlName="cpassword" placeholder="Confirm Password" class="form-control">
+									<div *ngIf="regForm.controls['password'].value!=regForm.controls['cpassword'].value"
+									class="alert alert-danger"> Password not matches</div>
+									<!--{{regForm.controls['cpassword'].value}}-->
 								</div>
 								<label>MobileNo</label>
 								<div class="form-group" id="">
-									<input type="text"   formControlName="mobilenumber" placeholder="mobilenmber" class="form-control">
+									<input type="text" formControlName="mobilenumber" placeholder="mobilenmber" class="form-control" minlength>
+									<div [hidden]="regForm.controls['mobilenumber'].valid || regForm.controls['mobilenumber'].pristine"
+									class="alert alert-danger"> mobilenmber must be number</div>
 								</div>
 								<div class="form-group" id="">
 									<label>Address</label>
@@ -70,8 +82,8 @@
 									</mat-select>
 								  </mat-form-field>
 								</div>
-								<div class="col-sm-6 col-sm-offset-3">
-									<input type="submit"  value="Register Now" class="form-control btn btn-register" 
+								<div>
+									<input type="submit"  value="Register Now" class="form-control btn" 
 									[disabled]="!userForm.form.valid" >
 								</div>
 							</form>

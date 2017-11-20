@@ -41,7 +41,6 @@
   </div>
   
  </div>
-         
 
  <div>
     
@@ -49,7 +48,7 @@
   </div>
 
 
- <form [formGroup]="myForm" novalidate (ngSubmit)="save(myForm.value)">
+ <form [formGroup]="myForm" novalidate >
    
                  
     <div formArrayName="addresses"  class="stuck">
@@ -64,22 +63,17 @@
         </div>
       </div>
       <div class="margin-20">
-          <button type="submit" class="btn btn-primary pull-right" >Submit</button>
+          <button type="submit" class="btn btn-primary pull-right">Submit</button>
         </div>
-          
 </form>
 
 
               <div class="margin-20">
                 <div>idForm details:-</div>
                 <pre>Is myForm valid?: <br>{{myForm.valid | json}}</pre>
-                <pre>form value: <br>{{myForm.value | json}}</pre>
+                <pre>form value: <br>{{myForm.value | json }}</pre>                
                </div>
-              
-
-           
-
-           
+          
           <div class="modal-footer">
               
             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

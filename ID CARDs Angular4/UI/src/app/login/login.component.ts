@@ -69,7 +69,7 @@ userValidator(){
       {
         this.loginservice.setUserLoggedIn();
         console.log("checking deliver login");
-        this.router.navigate(['adminHome'])
+        this.router.navigate(['admin'])
       }
       else
       this.router.navigate (['login']);

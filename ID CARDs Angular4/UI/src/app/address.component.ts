@@ -1,5 +1,5 @@
-import { Component, Input } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { Component, Input, ViewChild} from '@angular/core';
+import { FormGroup,FormControl } from '@angular/forms';
 
 @Component({
     moduleId: module.id,
@@ -8,5 +8,5 @@ import { FormGroup } from '@angular/forms';
 })
 export class AddressComponent {
     @Input('group')
-    public adressForm: FormGroup;
+    public adressForm: FormGroup
 }

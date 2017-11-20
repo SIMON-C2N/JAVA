@@ -114,10 +114,10 @@ if(this.formno!=null){
    }
 
 
-  
 
 
 
+   
 public myForm: FormGroup;
 
    
@@ -131,7 +131,6 @@ public myForm: FormGroup;
     
     initAddress() {
         return this._fb.group({
-           
             name:  ['', Validators.required],
             empid: ['', Validators.required],
              issueddate: ['', Validators.required],
@@ -147,13 +146,11 @@ public myForm: FormGroup;
     }
 
     addAddress() {
-      
-     
         const control = <FormArray>this.myForm.controls['addresses'];
         const addrCtrl = this.initAddress();
-        
         control.push(addrCtrl);
-      
+
+        console.log("ssssssssssssssssss"+control);
     }
 
     removeAddress(i: number) {
@@ -163,8 +160,7 @@ public myForm: FormGroup;
 
 
     save(model: Customer) {
-
-alert(model.addresses[0].name);
+      alert(model.addresses[0].name);
       console.log(model.addresses );
     }
 

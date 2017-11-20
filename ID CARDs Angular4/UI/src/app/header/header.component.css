@@ -3,8 +3,23 @@ header{
 	text-align:center;
    padding:20px 0;
    font-size: 30px;
-   background-color:#9b42f4;
+   background-color:#eee;
    
-  
    border-bottom: 2px  solid #eee;
+}
+
+.btn-primary{
+    width:100px;
+}
+.function{
+
+    align-content: center;
+    margin-left: 924px;
+    font-size: large;
+    padding-top: 14px;
+}
+
+.small_banner img {
+    width: 100%;
+
 }

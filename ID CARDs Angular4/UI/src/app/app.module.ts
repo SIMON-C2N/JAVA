@@ -1,8 +1,13 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
+<<<<<<< HEAD
 import { HttpClientModule} from '@angular/common/http';
 
+=======
+import { HttpClientModule} from '@angular/common/http'
+import { AddressComponent } from './address.component';
+>>>>>>> 52f2d891c88c4574c74963d2be191f161f9f25a5
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
@@ -35,15 +40,24 @@ import { ProfileService } from './profile.service';
 import { DeliverService } from './deliver.service';
 import { AdminService } from './admin.service';
 import { AdminComponent } from './admin/admin.component';
+<<<<<<< HEAD
 import { DeliverComponent } from './deliver/deliver.component';
+=======
+import { FirstComponent } from './first/first.component';
+import { DeliverComponent } from './Delivery/deliver/deliver.component';
+>>>>>>> 52f2d891c88c4574c74963d2be191f161f9f25a5
 import { OrdersComponent } from './orders/orders.component';
 import { TrackdelivarablesComponent } from './trackdelivarables/trackdelivarables.component';
 
 const appRoutes: Routes = [
 { 
   path: '', 
-  redirectTo: 'login', 
+  redirectTo: 'first', 
   pathMatch: 'full'  
+},
+{
+  path: 'first',    
+  component: FirstComponent 
 },
 { 
   path: 'login',    
@@ -118,10 +132,18 @@ const appRoutes: Routes = [
   
   @NgModule({
   declarations: [
+<<<<<<< HEAD
    AppComponent,
    HeaderComponent,
    LoginComponent,
    FooterComponent,
+=======
+    AppComponent,
+    AddressComponent,
+    HeaderComponent,
+    LoginComponent,
+    FooterComponent,
+>>>>>>> 52f2d891c88c4574c74963d2be191f161f9f25a5
    RegisterComponent,
    AdminHomeComponent,
    UserHomeComponent,
@@ -137,6 +159,7 @@ const appRoutes: Routes = [
    AdminComponent,
    DeliverComponent,
    OrdersComponent,
+  FirstComponent,
    TrackdelivarablesComponent
  ],
   imports: [

@@ -34,27 +34,13 @@ public class IdcardController {
 	public ResponseEntity<Void> createIdcard(@RequestBody Idcard idcard, UriComponentsBuilder builder) {
        
 		
-		System.out.println(idcard.getUserimage());
 		
-		
-		File file = new File(idcard.getUserimage());
-		byte[] imageData = new byte[(int) file.length()];
-		 
-		try {
-		    FileInputStream fileInputStream = new FileInputStream(file);
-		    fileInputStream.read(imageData);
-		    System.out.println(fileInputStream);
-		    fileInputStream.close();
-		} catch (Exception e) {
-		    e.printStackTrace();
-		}
-		
-		/*boolean flag = idcardService.createIdcard(idcard);
+		boolean flag = idcardService.createIdcard(idcard);
        if (flag == false) {
         	return new ResponseEntity<Void>(HttpStatus.CONFLICT);
-       }*/
+       }
         HttpHeaders headers = new HttpHeaders();
-        //headers.setLocation(builder.path("/idcard?id={id}").buildAndExpand(idcard.getId()).toUri());
+        headers.setLocation(builder.path("/idcard?id={id}").buildAndExpand(idcard.getId()).toUri());
         return new ResponseEntity<Void>(headers, HttpStatus.CREATED);
 	}
 }

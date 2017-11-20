@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import {UserService} from '/JAVA/ID CARDs Angular4/UI/src/app/user.service';
 import { Router } from '@angular/router';
 
 

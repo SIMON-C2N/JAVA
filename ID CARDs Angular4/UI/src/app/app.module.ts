@@ -1,7 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
-import { HttpClientModule} from '@angular/common/http'
+import { HttpClientModule} from '@angular/common/http';
+
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
@@ -12,20 +13,20 @@ import { RouterModule, Routes } from '@angular/router';
 import { FormsModule, FormGroup, FormBuilder, Validators, FormControl, ReactiveFormsModule } from '@angular/forms';
 import { AdminHomeComponent } from './admin-home/admin-home.component';
 import { UserHomeComponent } from './user-home/user-home.component';
-import { DeliverHomeComponent } from './Delivery/deliver-home/deliver-home.component';
+import { DeliverHomeComponent } from './deliver-home/deliver-home.component';
 import { UserService } from './user.service';
 import { UserComponent } from './user/user.component';
 import { MyordersComponent} from './myorders/myorders.component';
-import {CustomerreceiptComponent} from './customerreceipt/customerreceipt.component';
+import { CustomerreceiptComponent } from './customerreceipt/customerreceipt.component';
 import { IdcardselectionComponent } from './idcardselection/idcardselection.component';
-import {SaveddetailsComponent} from './saveddetails/saveddetails.component';
+import { SaveddetailsComponent} from './saveddetails/saveddetails.component';
 import { DbComponent } from './db/db.component';
 import { RegisterService } from './register.service';
 import { IdsubmitService } from './idsubmit.service';
 import { LoginService } from './login.service';
 import { CartComponent } from './cart/cart.component';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {MatCardModule,MatSelectModule} from '@angular/material';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatCardModule,MatSelectModule} from '@angular/material';
 import { ProfileComponent } from './profile/profile.component';
 import { UploadfileService } from './uploadfile.service';
 import { AngularMultiSelectModule } from 'angular2-multiselect-dropdown/angular2-multiselect-dropdown';
@@ -34,7 +35,7 @@ import { ProfileService } from './profile.service';
 import { DeliverService } from './deliver.service';
 import { AdminService } from './admin.service';
 import { AdminComponent } from './admin/admin.component';
-import { DeliverComponent } from './Delivery/deliver/deliver.component';
+import { DeliverComponent } from './deliver/deliver.component';
 import { OrdersComponent } from './orders/orders.component';
 import { TrackdelivarablesComponent } from './trackdelivarables/trackdelivarables.component';
 
@@ -117,10 +118,10 @@ const appRoutes: Routes = [
   
   @NgModule({
   declarations: [
-    AppComponent,
-    HeaderComponent,
-    LoginComponent,
-    FooterComponent,
+   AppComponent,
+   HeaderComponent,
+   LoginComponent,
+   FooterComponent,
    RegisterComponent,
    AdminHomeComponent,
    UserHomeComponent,
@@ -142,8 +143,8 @@ const appRoutes: Routes = [
     HttpModule,
     BrowserModule,
     FormsModule,
+    ReactiveFormsModule,    
     HttpClientModule,
-    ReactiveFormsModule,
     BrowserAnimationsModule,
     MatCardModule,
     MatSelectModule,

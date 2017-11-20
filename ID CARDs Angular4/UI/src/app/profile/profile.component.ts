@@ -116,6 +116,12 @@ export class ProfileComponent implements OnInit {
       let employeeImage = this.regEmpForm.get('employeeImage').value;
       this.emps= Array(new Emps(name,employeeid,issuedDate,address,companyName,bloodGroup,contactNumber,dob,size,employeeImage,this.companylogo.value))
     }   
+    const Image=this.logo.nativeElement;
+    if(Image.files&&Image.files[0]){
+      this.companylogofile=Image.files[0];
+    }
+    const imagefile:File=this.companylogofile;
+    console.log(imagefile);
     console.log(this.emps);
     }
     

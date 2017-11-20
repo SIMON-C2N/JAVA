@@ -63,7 +63,7 @@ userValidator(){
       {
         this.loginservice.setUserLoggedIn();
         console.log("checking deliver login");
-        this.router.navigate(['deliverHome'])
+        this.router.navigate(['deliver'])
       }
       else if(status==200 && localStorage.getItem('role')==='admin')
       {

@@ -5,7 +5,7 @@
               {{field.fieldName}}
         </div>
         <span *ngFor="let form of nofemps">
-                {{nofemps.length}}
+                {{nofemps.length}}    
         <form [formGroup]="regEmpForm" (ngSubmit)="multiformController()" #userForm="ngForm" method="post" role="form" style="display: block;" id={{nofemps.length}}>
                <td><input type="text" formControlName="name" placeholder="Name" class="form-control" ></td> 
                <td><input type="email"   formControlName="employeeid" placeholder="EmpID" class="form-control"></td>        

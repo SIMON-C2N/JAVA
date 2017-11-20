@@ -143,7 +143,7 @@ idForm = new FormGroup({
    for(this.i=0;this.i<this.formno;this.i++){
     let name = this.idForm.get('name').value;
     let empid=this.idForm.get('empid').value;
-    let issueddate=this.idForm.get('issueddate').value;
+    let issueddate=this.idForm.get('issueddate').value;    
     let address =this.idForm.get('address').value;
     let companyname =this.idForm.get('companyname').value;
     let bloodgroup =this.idForm.get('bloodgroup').value;
@@ -171,7 +171,3 @@ this.requestProcessing = true;
 ngOnInit() {
 }
 }
-
-
-
-

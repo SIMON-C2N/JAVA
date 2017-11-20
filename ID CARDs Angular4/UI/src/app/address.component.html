@@ -29,7 +29,7 @@ input[type=date].form-control{
 </style>
 
 
-<div [formGroup]="adressForm">
+<div [formGroup]="adressForm"    >
     <table class="table table-striped table-dark">
         <thead>
           <tr>
@@ -50,6 +50,7 @@ input[type=date].form-control{
           <tr>
               <td><input type="text"   class="col-xs-2" required   placeholder="name" formControlName="name"  class="form-control"></td>
               <td><input type="text" required  placeholder="EmployeeId"  formControlName="empid" class="form-control"></td>
+<<<<<<< HEAD
               <td><input type="date" required  placeholder="Issued Date"  formControlName="issueddate" class="form-control"></td>
               <td><input type="text" required  placeholder="Address" formControlName="address" class="form-control"></td>
               <td><input type="text" required  placeholder="companyname" formControlName="companyname"  class="form-control"></td>
@@ -65,6 +66,25 @@ input[type=date].form-control{
               <td><input type="file"    required    formControlName="userimage" #userimage  class="form-control"></td>
               <td><input type="file"    required  formControlName="companylogo"  #companylogo class="form-control"></td>
           </tr> 
+=======
+                <td><input type="date" required  placeholder="Issued Date"  formControlName="issueddate" class="form-control"></td>
+                  <td><input type="text" required  placeholder="Address" formControlName="address" class="form-control"></td>
+                  <td><input type="text" required  placeholder="companyname" formControlName="companyname"  class="form-control"></td>
+                    <td><input type="text" required  placeholder="BloodGroup" formControlName="bloodgroup"  class="form-control"></td>
+                    <td><input type="text"required   placeholder="ContactNumber" formControlName="mobilenumber" class="form-control"></td>
+                    <td><input type="date" required  placeholder="Dob"  formControlName="dob" class="form-control"></td>
+                      <td><select class="form-control"  id="size" formControlName="size">
+                        <option value="-1">Select size</option>
+                          
+                                       <option value=" 3.370 x 2.125 in (85.60 x 53.98 mm)">size1</option>
+                                        <option value="4.134 x 2.913 in (105 x 74mm)">size2</option>
+                                                </select></td>
+                                                <td><input type="file"    required   #userimage  formControlName="userimage"  accept=".jpg" class="form-control"></td>
+                                                <td><input type="file"    required  formControlName="companylogo"  #companylogo class="form-control"></td>
+                                                
+                                      
+          </tr>             
+>>>>>>> 8a5598ec2bed14bced315c552ba054ebe312d860
         </tbody>
       </table> 
 </div>

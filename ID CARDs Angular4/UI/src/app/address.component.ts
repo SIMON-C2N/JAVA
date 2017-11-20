@@ -8,5 +8,13 @@ import { FormGroup,FormControl } from '@angular/forms';
 })
 export class AddressComponent {
     @Input('group')
+<<<<<<< HEAD
     public adressForm: FormGroup
 }
+=======
+    public adressForm: FormGroup;
+
+
+    
+}
+>>>>>>> 8a5598ec2bed14bced315c552ba054ebe312d860

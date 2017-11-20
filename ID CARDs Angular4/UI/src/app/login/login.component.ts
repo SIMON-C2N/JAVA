@@ -13,6 +13,7 @@ import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 })
 
 export class LoginComponent implements OnInit {
+
   allusers: User[];
   statusCode: number;
   status:number

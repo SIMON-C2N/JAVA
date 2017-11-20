@@ -43,7 +43,7 @@ formno
   i
   
  @ViewChild('companylogo') logo;
- @ViewChild('userimage') userimage;
+
   product
   price
   productid
@@ -123,9 +123,11 @@ public myForm: FormGroup;
    
 
     ngOnInit() {
+      
         this.myForm = this._fb.group({
-           
-            addresses: this._fb.array([])
+
+                    
+            addresses: this._fb.array([])  
         });
      }
     
@@ -164,7 +166,7 @@ public myForm: FormGroup;
 
     save(model: Customer) {
 
-alert(model.addresses[0].name);
+alert(model.addresses[0].userimage);
       console.log(model.addresses );
     }
 

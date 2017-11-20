@@ -2,11 +2,22 @@
  
 }
 #tabs{
-    display: inline;
-    padding: 2px;
+    display: unset;
+    padding: 30px;
     border-radius: 20px;
     font-size: 20px;
     cursor: pointer;
-   
-    
+    background-color: cornflowerblue;
+    font-family: cursive;
+ 
+}
+
+
+.container{
+
+    width: 1286px;
+}
+
+.btn-lg{
+    margin-left: 276px;
 }

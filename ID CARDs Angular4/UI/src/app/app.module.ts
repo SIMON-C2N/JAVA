@@ -35,6 +35,7 @@ import { ProfileService } from './profile.service';
 import { DeliverService } from './deliver.service';
 import { AdminService } from './admin.service';
 import { AdminComponent } from './admin/admin.component';
+import { FirstComponent } from './first/first.component';
 import { DeliverComponent } from './Delivery/deliver/deliver.component';
 import { OrdersComponent } from './orders/orders.component';
 import { TrackdelivarablesComponent } from './trackdelivarables/trackdelivarables.component';
@@ -42,8 +43,12 @@ import { TrackdelivarablesComponent } from './trackdelivarables/trackdelivarable
 const appRoutes: Routes = [
 { 
   path: '', 
-  redirectTo: 'login', 
+  redirectTo: 'first', 
   pathMatch: 'full'  
+},
+{
+  path: 'first',    
+  component: FirstComponent 
 },
 { 
   path: 'login',    
@@ -138,6 +143,7 @@ const appRoutes: Routes = [
    AdminComponent,
    DeliverComponent,
    OrdersComponent,
+  FirstComponent,
    TrackdelivarablesComponent
  ],
   imports: [

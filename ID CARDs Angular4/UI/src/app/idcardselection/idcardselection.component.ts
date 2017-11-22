@@ -114,13 +114,13 @@ if(this.formno!=null){
    }
 
 
-  
 
    selectedFiles: FileList
    currentFileUpload: File
    progress: { percentage: number } = { percentage: 0 }
   
 
+   
 public myForm: FormGroup;
 
    
@@ -144,7 +144,7 @@ public myForm: FormGroup;
     upload() {
       this.progress.percentage = 0;
    
-      this.currentFileUpload = this.selectedFiles.item(0)
+      this.currentFileUpload = this.selectedFiles.item(0);
       alert(this.selectedFiles.item(0));
       this.idcardService.pushFileToStorage(this.currentFileUpload).subscribe(event => {
         if (event.type === HttpEventType.UploadProgress) {
@@ -160,7 +160,6 @@ public myForm: FormGroup;
     
     initAddress() {
         return this._fb.group({
-           
             name:  ['', Validators.required],
             empid: ['', Validators.required],
              issueddate: ['', Validators.required],
@@ -176,13 +175,11 @@ public myForm: FormGroup;
     }
 
     addAddress() {
-      
-     
         const control = <FormArray>this.myForm.controls['addresses'];
         const addrCtrl = this.initAddress();
-        
         control.push(addrCtrl);
-      
+
+        console.log("ssssssssssssssssss"+control);
     }
 
     removeAddress(i: number) {
@@ -192,8 +189,7 @@ public myForm: FormGroup;
 
 
     save(model: Customer) {
-
-alert(model.addresses[0].userimage);
+      alert(model.addresses[0].name);
       console.log(model.addresses );
     }
 

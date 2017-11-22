@@ -1,9 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
-import { HttpClientModule} from '@angular/common/http'
-import { AddressComponent } from './address.component';
-
+import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
@@ -125,7 +123,7 @@ const appRoutes: Routes = [
   @NgModule({
   declarations: [
     AppComponent,
-    AddressComponent,
+   
     HeaderComponent,
     LoginComponent,
     FooterComponent,

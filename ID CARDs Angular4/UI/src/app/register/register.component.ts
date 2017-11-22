@@ -59,12 +59,25 @@ export class RegisterComponent implements OnInit {
   processValidation = false;
   //create form group 
   regForm = new FormGroup({
-    username: new FormControl('',  Validators.required),
-    email:new FormControl('', Validators.required),
+    username: new FormControl('',  Validators.compose([
+      Validators.required
+    ])),
+    email:new FormControl('', Validators.compose([
+      Validators.required,
+      Validators.pattern(/^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/)
+    ])),
     password:new FormControl('', Validators.required),
     cpassword:new FormControl('', Validators.required),
-    mobilenumber:new FormControl('', Validators.required),
-    address:new FormControl('', Validators.required),
+    mobilenumber:new FormControl('', Validators.compose([
+      Validators.required,
+      Validators.minLength(10),
+      Validators.maxLength(10),
+      Validators.pattern(/^[789]\d{9}$/),
+      Validators.pattern(/\d*\.?\d+/)
+    ])),
+    address:new FormControl('', Validators.compose([
+      Validators.required
+    ])),
     role:new FormControl('', Validators.required),
   });
   

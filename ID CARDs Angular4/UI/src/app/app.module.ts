@@ -1,9 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
-import { HttpClientModule} from '@angular/common/http'
-import { AddressComponent } from './address.component';
-
+import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
@@ -39,6 +37,7 @@ import { DeliverComponent } from './deliver/deliver.component';
 import { FirstComponent } from './first/first.component';
 import { OrdersComponent } from './orders/orders.component';
 import { TrackdelivarablesComponent } from './trackdelivarables/trackdelivarables.component';
+import { FanMenuModule } from 'ng2-fan-menu';
 
 const appRoutes: Routes = [
 { 
@@ -128,7 +127,7 @@ const appRoutes: Routes = [
    LoginComponent,
    FooterComponent,
     AppComponent,
-    AddressComponent,
+   
     HeaderComponent,
     LoginComponent,
     FooterComponent,
@@ -158,6 +157,8 @@ const appRoutes: Routes = [
     HttpClientModule,
     BrowserAnimationsModule,
     MatCardModule,
+    FanMenuModule,
+    
     MatSelectModule,
     AngularMultiSelectModule,
     RouterModule.forRoot(  appRoutes, { enableTracing: true }  )

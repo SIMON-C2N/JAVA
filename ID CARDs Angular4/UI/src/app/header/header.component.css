@@ -1,13 +1,22 @@
 header{
 	
 	text-align:center;
-   padding:20px 0;
    font-size: 30px;
    background-color:#eee;
-   
-   border-bottom: 2px  solid #eee;
+
+   border-bottom: 0px  solid #eee;
+ 
+
+   top: 0;
+   width: 100%;
+  
 }
 
+
+.img{
+    margin-top: 18px;
+    
+}
 .btn-primary{
     width:100px;
 }

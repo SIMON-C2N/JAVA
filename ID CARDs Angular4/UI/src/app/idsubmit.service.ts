@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Http, Response, Headers, URLSearchParams, RequestOptions } from '@angular/http';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClient, HttpRequest, HttpEvent } from '@angular/common/http';
 import {environment } from '../environments/environment';
 
 @Injectable()
@@ -15,8 +15,25 @@ export class IdsubmitService {
   //     return this.http.post(environment._idcardsubmitUrl, user, options)
   //            .map(success => success.status).catch(this.handleError);
   // }
-  private handleError (error: Response | any) {
-		console.error(error.message || error);
-		return Observable.throw(error.status); 
-    }
+  // private handleError (error: Response | any) {
+	// 	console.error(error.message || error);
+	// 	return Observable.throw(error.status); 
+  //   }
+  constructor(private http: HttpClient) {}
+  
+   pushFileToStorage(file: File): Observable<HttpEvent<{}>> {
+     let formdata: FormData = new FormData();
+  
+     formdata.append('file', file);
+  
+     const req = new HttpRequest('POST', 'http://localhost:8080/user/post', formdata, {
+       reportProgress: true,
+       responseType: 'text'
+     });
+  
+     return this.http.request(req);
+   }
+  
+
+
 }

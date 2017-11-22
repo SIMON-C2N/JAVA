@@ -13,14 +13,14 @@
 
 
 
-  <div class="container">
+
   <div class="modal fade" id="myModal" role="dialog">
       <div class="modal-dialog">
       
         <!-- Modal content-->
         <div class="modal-content" style="padding-bottom: 135px;
-        margin-left: -40px;
-        margin-right: -40px;    margin-top: 66px;">
+      margin-top: 66px;margin-left: 85px;
+      margin-right: 86px;">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal">&times;</button>
             <h4  style="color:#0004FF;font-family: cursive;" class="modal-title" >{{url?.id}}</h4>
@@ -29,19 +29,76 @@
 
 
 
-          <div class="modal-body">
-          <img src="./assets/templates/{{url?.imageURL}}.jpg"/>
-                  
+  <div class="modal-body">
+
+
+      <div class="form-group">
+         <div class="col-sm-4"> 
+            <img src="./assets/templates/{{url?.imageURL}}.jpg" class="img-responsive"  alt="Image">
+          </div>
+           <div class="col-sm-4 design"> 
+              Price:<b>{{url?.price}}$</b><br>
+              TotalPrice:{{url?.price}}$<br>
+              Size1:{{url?.size1}}<br>
+              Size2:{{url?.size2}}
+            
+          </div>
+
+        </div>
+        <div >
+         
+              <form>
+              <div class="form-group">
+                  <label class="control-label col-sm-4" for="oname">Organization Name:</label>
+                  <div class="col-sm-4">
+                    <input type="text" class="form-control" id="orgname" placeholder="Enter Organization Name">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="control-label col-sm-4" for="quantity">Quantity:</label>
+                  <div class="col-sm-4"> 
+                    <input type="text" class="form-control" id="quantity" placeholder="Enter quantity">
+                  </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-4" for="quantity">Detailed File:</label>
+                    <div class="col-sm-4"> 
+                      <input type="file" class="form-control" id="file" (change)="selectFile($event)" >
+                    </div>
+                  </div>
+            
+                <div class="form-group">
+                    <div class="col-sm-4"> 
+                    <label class="control-label col-sm-4" for="quantity">size</label>
+                    
+                    <select class="form-control" id="exampleFormControlSelect1" class="form-control">
+                      <option value="ID1">ID1</option>
+                      <option value="ID2">ID2</option>
+                     
+                    </select>
+                    </div>
+                  </div>
+              <div class="form-group"> 
+                  <div class="col-sm-offset-2 col-sm-4">
+                    <button type="submit" (click)="upload()" class="btn btn-default">Submit</button>
+                  </div>
+                </div>
+               
+              </form>
+            </div>
+        </div>
+  <!-- 
   <div class="design">
-    
   Price:<b>{{url?.price}}$</b><br>
-  TotalPrice:{{url?.price*this.formno}}$<br>
+  TotalPrice:{{url?.price}}$<br>
   Size1:{{url?.size1}}<br>
   Size2:{{url?.size2}}<br>
-  </div>
-  
- </div>
+  </div> -->
 
+  
+
+         
+<!-- 
  <div>
     
     <input  type="text"   [(ngModel)]="formno" class="form-control" ><button (click)="profilefor()">Generate</button>
@@ -65,14 +122,16 @@
       <div class="margin-20">
           <button type="submit" class="btn btn-primary pull-right">Submit</button>
         </div>
-</form>
+          
+</form> -->
 
-
+<!-- 
               <div class="margin-20">
                 <div>idForm details:-</div>
                 <pre>Is myForm valid?: <br>{{myForm.valid | json}}</pre>
                 <pre>form value: <br>{{myForm.value | json }}</pre>                
                </div>
+<<<<<<< HEAD
           
 <<<<<<< HEAD
            <!-- <button (click)="show = !show">{{show ? 'show' : 'show'}}</button> -->
@@ -136,6 +195,13 @@
            
 =======
 >>>>>>> 52f2d891c88c4574c74963d2be191f161f9f25a5
+=======
+              
+
+            -->
+
+           
+>>>>>>> 7e4a0ad283823ce01002e780e5cf34d41b6ee9f9
           <div class="modal-footer">
               
             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -149,7 +215,7 @@
       </div>
     </div>
     
-</div>
+
   
   
  

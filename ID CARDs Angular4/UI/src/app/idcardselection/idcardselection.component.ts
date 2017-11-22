@@ -7,7 +7,7 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/startWith';
 import 'rxjs/add/observable/merge';
 import 'rxjs/add/operator/map';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpResponse, HttpEventType } from '@angular/common/http';
 import { IdsubmitService  } from '../idsubmit.service';
 import {Headers, Http} from '@angular/http';
 import { Customer } from '../customer.interface';
@@ -116,7 +116,10 @@ if(this.formno!=null){
 
   
 
-
+   selectedFiles: FileList
+   currentFileUpload: File
+   progress: { percentage: number } = { percentage: 0 }
+  
 
 public myForm: FormGroup;
 
@@ -130,6 +133,30 @@ public myForm: FormGroup;
             addresses: this._fb.array([])  
         });
      }
+
+
+
+     selectFile(event) {
+      this.selectedFiles = event.target.files;
+    
+    }
+   
+    upload() {
+      this.progress.percentage = 0;
+   
+      this.currentFileUpload = this.selectedFiles.item(0)
+      alert(this.selectedFiles.item(0));
+      this.idcardService.pushFileToStorage(this.currentFileUpload).subscribe(event => {
+        if (event.type === HttpEventType.UploadProgress) {
+          this.progress.percentage = Math.round(100 * event.loaded / event.total);
+        } else if (event instanceof HttpResponse) {
+          console.log('File is completely uploaded!');
+        }
+      })
+   
+      this.selectedFiles = undefined
+    }
+
     
     initAddress() {
         return this._fb.group({

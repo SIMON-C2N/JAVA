@@ -1,8 +1,25 @@
-body {
-    padding-top: 90px;
-}
+
+	body {
+
+		padding-top: 90px;
+		background-image: url("/assets/images/free.jpg");
+	}
+	
+	
 
 
+	header{
+		
+		text-align:center;
+	   font-size: 30px;
+	   background-color:#eee;
+	   overflow: hidden;
+	   border-bottom: 0px  solid #eee;
+	 
+	   position: fixed;
+	   top: 0;
+	   width: 100%;
+	}
 
 
 select.form-control:not([size]):not([multiple]) {

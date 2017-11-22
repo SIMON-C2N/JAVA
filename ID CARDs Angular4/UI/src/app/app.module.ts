@@ -39,6 +39,7 @@ import { FirstComponent } from './first/first.component';
 import { DeliverComponent } from './Delivery/deliver/deliver.component';
 import { OrdersComponent } from './orders/orders.component';
 import { TrackdelivarablesComponent } from './trackdelivarables/trackdelivarables.component';
+import { FanMenuModule } from 'ng2-fan-menu';
 
 const appRoutes: Routes = [
 { 
@@ -154,6 +155,8 @@ const appRoutes: Routes = [
     ReactiveFormsModule,
     BrowserAnimationsModule,
     MatCardModule,
+    FanMenuModule,
+    
     MatSelectModule,
     AngularMultiSelectModule,
     RouterModule.forRoot(  appRoutes, { enableTracing: true }  )

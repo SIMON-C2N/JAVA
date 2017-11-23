@@ -103,60 +103,6 @@ formno
     this.url=temp.imgurl;
     console.log("coming");
   }
-<<<<<<< HEAD
-  profilefor(){
-    for(this.i=0;this.i<=this.formno;this.i++){  
-      this.nofemps=Array(this.i);
-      console.log(this.nofemps)   
-    }  
-  }
-  
-idForm = new FormGroup({
-   name: new FormControl('',  Validators.required),
-   empid:new FormControl('', Validators.required),
-    issueddate:new FormControl('', Validators.required),
-    address:new FormControl('', Validators.required),
-    companyname:new FormControl('', Validators.required),
-    bloodgroup: new FormControl('',  Validators.required),
-    mobilenumber: new FormControl('',  Validators.required),
-    dob: new FormControl('',  Validators.required),
-    size: new FormControl('',  Validators.required),
-    UserImage: new FormControl('',  Validators.required)  });
-
- idsubmit(value){
-  this.companylogo=this.logo.nativeElement;
-   for(this.i=0;this.i<this.formno;this.i++){
-    let name = this.idForm.get('name').value;
-    let empid=this.idForm.get('empid').value;
-    let issueddate=this.idForm.get('issueddate').value;    
-    let address =this.idForm.get('address').value;
-    let companyname =this.idForm.get('companyname').value;
-    let bloodgroup =this.idForm.get('bloodgroup').value;
-    let mobilenumber=this.idForm.get('mobilenumber').value;
-    let dob=this.idForm.get('dob').value;
-    let size=this.idForm.get('size').value;    
-    let user = new iddetails(name,empid,issueddate,address,companyname,bloodgroup,mobilenumber,dob,size,this.companylogo.value);
-    console.log(user);
-
-    this.idcardService.registerUser(user) 
-    .subscribe(successCode=>{
-   this.statusCode=successCode
- },
- errorCode => this.statusCode = errorCode
-);//subscribe
-}
-
- }
-//method
-//Perform preliminary processing configurations
-preProcessConfigurations() {
-this.statusCode = null;
-this.requestProcessing = true;   
-}
-ngOnInit() {
-}
-}
-=======
 profilefor(){
 if(this.formno!=null){
   for(this.i=0;this.i<this.formno;this.i++){  
@@ -255,4 +201,3 @@ public myForm: FormGroup;
 
 
 
->>>>>>> 52f2d891c88c4574c74963d2be191f161f9f25a5

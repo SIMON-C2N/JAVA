@@ -37,7 +37,7 @@ import { DeliverComponent } from './deliver/deliver.component';
 import { FirstComponent } from './first/first.component';
 import { OrdersComponent } from './orders/orders.component';
 import { TrackdelivarablesComponent } from './trackdelivarables/trackdelivarables.component';
-import { FanMenuModule } from 'ng2-fan-menu';
+//import { FanMenuModule } from 'ng2-fan-menu';
 
 const appRoutes: Routes = [
 { 
@@ -157,7 +157,7 @@ const appRoutes: Routes = [
     HttpClientModule,
     BrowserAnimationsModule,
     MatCardModule,
-    FanMenuModule,
+    //FanMenuModule,
     
     MatSelectModule,
     AngularMultiSelectModule,

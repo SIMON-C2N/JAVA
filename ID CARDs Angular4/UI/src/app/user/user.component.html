@@ -1,5 +1,4 @@
-<app-header></app-header>
-
+<!--<app-header></app-header>
 <div class="fullpage">
   <div class="menu">
   <h5 class="dropdown" id="welmsg">Welcome {{username}} <i class="fa fa-caret-down"></i>
@@ -24,11 +23,11 @@
       <td>{{profile.username}}</td><td>{{profile.profileId}}</td>
    </tr>-->
 
-   <div class="modal fade" id="editprofile" role="dialog">
+   <!--<div class="modal fade" id="editprofile" role="dialog">
     <div class="modal-dialog">
     
       <!-- view profile in model-->
-     <div class="modal-content">
+     <!--<div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
           <h4 class="modal-title">EditYourProfile</h4>
@@ -71,9 +70,36 @@
       
     </div>
   </div>
-  
-
-  <app-footer></app-footer>
-  
-
-  
+  <app-footer></app-footer>-->
+<!--====================================================================================================-->
+<app-header id="head"></app-header>
+<div class="fullpage">
+  <div class="menu">
+      <span [matMenuTriggerFor]="menu" id="menu">
+          <h2><i class="fa fa-bars" aria-hidden="true"></i></h2>
+      </span>
+        <mat-menu #menu="matMenu">
+               <!-- <h5 class="dropdown" id="welmsg">Welcome {{username}} <i class="fa fa-caret-down"></i>
+                <li class="dropdown-content">
+                  <br>
+                  <ul  data-toggle="modal" data-target="#editprofile" >Profile</ul>
+                  <ul (click)="logout()">Logout</ul>
+                </li>
+                </h5>-->
+                  <ul class="tabs">
+                    <li *ngFor="let tab of tabs" (click)="onClick(tab)">
+                        <button mat-menu-item>
+                            {{tab.name}}
+                        </button>                        
+                    </li>
+                    <button mat-menu-item (click)="logout()">
+                        Logout
+                    </button>
+                  </ul>
+        </mat-menu>
+  </div>   
+  <div class="welcomemsg"> 
+    <h3>Welcome {{username}}</h3>
+  </div>
+</div>
+<app-footer></app-footer>

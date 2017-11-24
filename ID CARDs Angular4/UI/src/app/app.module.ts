@@ -24,7 +24,9 @@ import { IdsubmitService } from './idsubmit.service';
 import { LoginService } from './login.service';
 import { CartComponent } from './cart/cart.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatCardModule,MatSelectModule} from '@angular/material';
+import { MatCardModule,MatSelectModule, MatMenuItem} from '@angular/material';
+import {MatMenuModule} from '@angular/material/menu';
+import {MatIconModule} from '@angular/material/icon';
 import { ProfileComponent } from './profile/profile.component';
 import { UploadfileService } from './uploadfile.service';
 import { AngularMultiSelectModule } from 'angular2-multiselect-dropdown/angular2-multiselect-dropdown';
@@ -157,8 +159,9 @@ const appRoutes: Routes = [
     HttpClientModule,
     BrowserAnimationsModule,
     MatCardModule,
-    //FanMenuModule,
-    
+    MatMenuModule,
+    MatIconModule,
+    //FanMenuModule,    
     MatSelectModule,
     AngularMultiSelectModule,
     RouterModule.forRoot(  appRoutes, { enableTracing: true }  )

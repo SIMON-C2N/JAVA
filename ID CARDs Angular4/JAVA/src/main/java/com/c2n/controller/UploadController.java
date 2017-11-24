@@ -7,6 +7,8 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -24,22 +26,16 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.c2n.service.IRegisterService;
 import com.c2n.service.IUploadService;
+import com.c2n.service.StorageService;
 import com.c2n.service.UploadService;
 @Controller
-@RequestMapping(value = "uploadFile", method = RequestMethod.POST)
+@RequestMapping("user")
 @CrossOrigin(origins = {"http://localhost:4200"})
 public class UploadController 
 {
 	@Autowired
-	private UploadService profileService;
-	
-	 @PostMapping("upload") // //new annotation since 4.3
+	StorageService storageService;
+	List<String> files = new ArrayList<String>();
 
-	 public ResponseEntity<Void> singleFileUpload(@RequestParam("file") MultipartFile file,
-	            RedirectAttributes redirectAttributes){
-		 profileService.singleFileUpload(file, redirectAttributes);
-					return null;
-		 
-	 }
 
 }

@@ -11,7 +11,6 @@ export class Menu {
 
 const menutabs: Menu[] = [
   {name: 'Home'},
-  {name: 'IdCardSelection'},
   {name: 'SavedDetails'},
   {name: 'MyOrders'},
   {name: 'CustomerReceipt'}
@@ -72,7 +71,7 @@ export class UserComponent implements OnInit {
     console.log("the coming uname"+this.username);
    
     //gets all the users from db
-    this.loginservice.getAllUserDetails().subscribe(
+   this.loginservice.getAllUserDetails().subscribe(
       users =>{
         this.allusers = users;
         console.log(users);
@@ -131,4 +130,5 @@ export class UserComponent implements OnInit {
     console.log("username and current user cleaning done");
     this.router.navigate(['login'])
   }
-}
+}//oninit
+//class

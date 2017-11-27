@@ -8,9 +8,24 @@ import { Router } from '@angular/router';
 })
 export class SaveddetailsComponent implements OnInit {
   
-constructor() {}
+constructor(private router: Router) {}
 
 ngOnInit() {
+}
+navigatetoHome(){
+  this.router.navigate(['user']);
+}
+navigatetoIDSelection(){
+  this.router.navigate(['idselection']);
+}  
+navigatetoSavedDetails(){
+  this.router.navigate(['SavedDetails']);
+}
+navigatetoEditMyOrders(){
+  this.router.navigate(['MyOrders']);
+}
+navigatetoCustomerReceipt(){
+  this.router.navigate(['CustomerReceipt']);
 }
 
 }

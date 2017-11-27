@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-cart',
@@ -6,7 +8,6 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./first.component.css']
 })
 export class FirstComponent implements OnInit {
-
 
   public options = {
     spinable: true,
@@ -47,11 +48,16 @@ public startAngles = {
 }
 
 
-  constructor() { }
+  constructor(private router:Router) { }
 
   ngOnInit() {
-
-
+  }
+  openIds(){
+      console.log("coming");
+      this.router.navigate(['IdCardSelection']);
+  }
+  contactus(){
+    this.router.navigate(['deliver']);
   }
 
 }

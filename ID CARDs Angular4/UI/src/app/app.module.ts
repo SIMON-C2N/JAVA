@@ -39,6 +39,7 @@ import { DeliverComponent } from './deliver/deliver.component';
 import { FirstComponent } from './first/first.component';
 import { OrdersComponent } from './orders/orders.component';
 import { TrackdelivarablesComponent } from './trackdelivarables/trackdelivarables.component';
+import { IdselectionComponent } from './idselection/idselection.component';
 //import { FanMenuModule } from 'ng2-fan-menu';
 
 const appRoutes: Routes = [
@@ -118,6 +119,10 @@ const appRoutes: Routes = [
 {
   path:'TrackDelivarables',
   component:TrackdelivarablesComponent
+},
+{
+  path:'idselection',
+  component:IdselectionComponent
 }
 
 ]; 
@@ -149,7 +154,8 @@ const appRoutes: Routes = [
    DeliverComponent,
    OrdersComponent,
   FirstComponent,
-   TrackdelivarablesComponent
+   TrackdelivarablesComponent,
+   IdselectionComponent
  ],
   imports: [
     HttpModule,

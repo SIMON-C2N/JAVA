@@ -4,6 +4,9 @@ import { LoginService } from '../login.service';
 import {UserService } from '../user.service';
 import { User } from '../register/register.component';
 import { FormControl, FormGroup, Validators, FormsModule } from '@angular/forms';
+declare var jquery:any;
+declare var $ :any;
+
 
 export class Menu {
   name: string;    
@@ -130,5 +133,21 @@ export class UserComponent implements OnInit {
     console.log("username and current user cleaning done");
     this.router.navigate(['login'])
   }
+  navigatetoHome(){
+    this.router.navigate(['user']);
+  }
+  navigatetoIDSelection(){
+    this.router.navigate(['idselection']);
+  }  
+  navigatetoSavedDetails(){
+    this.router.navigate(['SavedDetails']);
+  }
+  navigatetoEditMyOrders(){
+    this.router.navigate(['MyOrders']);
+  }
+  navigatetoCustomerReceipt(){
+    this.router.navigate(['CustomerReceipt']);
+  }
+  
 }//oninit
 //class

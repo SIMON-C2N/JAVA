@@ -1,0 +1,62 @@
+<div id="fullscreen_bg" class="fullscreen_bg">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 bhoechie-tab-container">
+                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 bhoechie-tab-menu">
+                    <ul class="list-group">
+                        <a (click)="navigatetoHome()" class="list-group-item ">
+                            <br/><br/><i class="glyphicon glyphicon-home"></i> Home<br/><br/>
+                        </a>
+                        <a (click)="navigatetoIDSelection()" class="list-group-item active">
+                             <br/><br/><i class="glyphicon glyphicon-tasks"></i> ID Card Selection<br/><br/>
+                        </a>  
+                        <a (click)="navigatetoSavedDetails()" class="list-group-item ">
+                            <br/><br/><i class="glyphicon glyphicon-transfer"></i> Saved Details<br/><br/>
+                        </a>
+                        <a (click)="navigatetoEditMyOrders()" class="list-group-item ">
+                            <br/><br/><h4 class="glyphicon glyphicon-wrench"></h4> My Orders<br/><br/>
+                        </a>
+                        <a (click)="navigatetoCustomerReceipt()" class="list-group-item ">
+                            <br/><br/><h4 class="glyphicon glyphicon-wrench"></h4> Customer Receipt<br/><br/>
+                        </a>
+                    </ul>
+                </div>
+                <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9 bhoechie-tab">
+                    <!--  -->
+                    <div class="bhoechie-tab-content active">
+                      <div class="selectTitle"><h1>Please Select your id cards</h1></div>
+                        <div class="templates">
+                            <ul class="tabs">
+                                <!--Display the images with the for loop-->
+                                <li *ngFor="let template of temps" (click)="onselectTemplate(template)"  data-toggle="modal" data-target="#viewTemp">
+                                <!--Brings the image from external-->
+                                <img class="floatingleft" src="{{template.imgurl}}"/>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>                               
+<div class="modal fade" id="viewTemp" role="FadeIn">
+    <div class="modal-dialog modal-lg">            
+<!-- Modal content-->
+        <div id="back" class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Modal Header</h4>
+            </div>
+            <div class="modal-body">
+                <img id="choosentemp" src="{{url}}"/>
+                <label>Full Name</label> <input type="text" placeholder="Please Enter FullName" [(ngModel)]="inputValue">{{inputValue}}
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-info">Save Changes</button>			
+                <button type="button" class="btn btn-success">Place Order</button>	
+            </div>
+            </div>
+        </div>
+    </div>
+</div>                        

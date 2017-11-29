@@ -101,6 +101,10 @@ export class RegisterComponent implements OnInit {
         }      
       )*/
       }
+      onclick()
+      {
+        this.router.navigate(['Login']);
+      }
 
       onRegFormSubmit(): void{
         console.log("coming");

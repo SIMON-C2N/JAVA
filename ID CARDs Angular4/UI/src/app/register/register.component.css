@@ -7,7 +7,10 @@
 	}
 	
 	
-
+	#login-form-link
+	{
+		cursor: pointer;
+	}
 
 	header{
 		

@@ -40,20 +40,23 @@ import { FirstComponent } from './first/first.component';
 import { OrdersComponent } from './orders/orders.component';
 import { TrackdelivarablesComponent } from './trackdelivarables/trackdelivarables.component';
 import { IdselectionComponent } from './idselection/idselection.component';
+import { PaginatorComponent } from './paginator/paginator.component';
+import { PaginationService } from './pagination.service';
+import { IndexComponent } from './index/index.component';
 //import { FanMenuModule } from 'ng2-fan-menu';
 
 const appRoutes: Routes = [
 { 
   path: '', 
-  redirectTo: 'first', 
+  redirectTo: 'index', 
   pathMatch: 'full'  
 },
 {
-  path: 'first',    
-  component: FirstComponent 
+  path: 'index',    
+  component: IndexComponent 
 },
 { 
-  path: 'login',    
+  path: 'Login',    
   component: LoginComponent 
 },
 { 
@@ -123,8 +126,15 @@ const appRoutes: Routes = [
 {
   path:'idselection',
   component:IdselectionComponent
+},
+{
+  path:'paginator',
+  component:PaginatorComponent
+},
+{
+  path:'header',
+  component:HeaderComponent
 }
-
 ]; 
   
   @NgModule({
@@ -133,11 +143,10 @@ const appRoutes: Routes = [
    HeaderComponent,
    LoginComponent,
    FooterComponent,
-    AppComponent,
-   
-    HeaderComponent,
-    LoginComponent,
-    FooterComponent,
+   AppComponent,
+   HeaderComponent,
+   LoginComponent,
+   FooterComponent,
    RegisterComponent,
    AdminHomeComponent,
    UserHomeComponent,
@@ -153,9 +162,11 @@ const appRoutes: Routes = [
    AdminComponent,
    DeliverComponent,
    OrdersComponent,
-  FirstComponent,
+   FirstComponent,
    TrackdelivarablesComponent,
-   IdselectionComponent
+   IdselectionComponent,
+   PaginatorComponent,
+   IndexComponent
  ],
   imports: [
     HttpModule,
@@ -182,7 +193,8 @@ const appRoutes: Routes = [
     ProfileService,
     DeliverService,
     AdminService,
-    IdsubmitService
+    IdsubmitService,
+    PaginationService
     ],
   bootstrap: [AppComponent]
 })

@@ -30,6 +30,10 @@ export class LoginComponent implements OnInit {
      alert("registration successfull");
    }*/
   }
+  onclick()
+  {
+    this.router.navigate(['register']);
+  }
 
 //after submiting login form control comes here
 loginUser(e){ 

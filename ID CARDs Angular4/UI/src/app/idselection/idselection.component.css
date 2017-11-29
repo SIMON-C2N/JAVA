@@ -4,10 +4,9 @@
     right: 0;
     bottom: 0;
     left: 0;
-    background-size: cover;
-    background-position: -10% 40%;
     background-image: url("/assets/images/user-background25.jpg");
-    background-repeat:repeat;
+    background-repeat:no-repeat;
+    background-size: 100em 50em;
   }
 /*  template tab */
 div.bhoechie-tab-container{

@@ -123,7 +123,7 @@ export class RegisterComponent implements OnInit {
           this.statusCode=successCode
           if(this.statusCode==201)
           {
-            this.router.navigate (['login']); 
+            this.router.navigate (['Login']); 
             this.loginservice.setstatus(this.statusCode);
           }
         },

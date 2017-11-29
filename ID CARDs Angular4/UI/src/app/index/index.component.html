@@ -4,6 +4,7 @@
         <li *ngFor="let menuitem of menuitems" (click)="onClick(menuitem)">
           {{menuitem.menuitem}}
         </li>
+        <li data-toggle="tar" data-target="#targetted">target</li>
     </div>
     <div id="myCarousel" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner">
@@ -34,7 +35,7 @@
                 </a>
         </div>
     </div>  
-    <div>
+    <div class="tar" id="targetted">
         <h1>hi</h1>
         <h1>hi</h1>
         <h1>hi</h1>

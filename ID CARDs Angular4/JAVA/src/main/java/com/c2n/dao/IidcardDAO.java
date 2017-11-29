@@ -1,5 +1,6 @@
 package com.c2n.dao;
 
+import java.util.Date;
 import java.util.List;
 
 import com.c2n.entity.Idcard;
@@ -12,5 +13,5 @@ public interface IidcardDAO {
     void createIdcard(Idcard idcard);
     void updateIdcard(Idcard idcard);
     void deleteIdcard(int idcardId);
-    boolean idcardExists(String address,String bloodgroup,String companyname,String dob,String empid,String issueddate,String mobilenumber,String name,String size, String userimage);
+    boolean idcardExists(int id,String orgname,String quantity,String size,String idcardname,String price,Date date,String orderstatus,String filename);
 }

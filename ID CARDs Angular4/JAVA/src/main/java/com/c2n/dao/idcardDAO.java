@@ -1,5 +1,6 @@
 package com.c2n.dao;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -32,7 +33,7 @@ public class idcardDAO implements IidcardDAO{
 	@Override
 	public void createIdcard(Idcard idcard) {
 		System.out.println("hello");
-		entityManager.persist(idcard);		
+		entityManager.persist(idcard);	
 	}
 
 	@Override
@@ -48,10 +49,10 @@ public class idcardDAO implements IidcardDAO{
 	}
 
 	@Override
-	public boolean idcardExists(String address, String bloodgroup, String companyname, String dob, String empid,String issueddate, String mobilenumber, String name, String size, String userimage) {
-		String hql = "FROM Idcard as card WHERE card.address= ? and card.bloodgroup= ?  and card.companyname= ? and card.dob= ? and card.empid= ? and card.issueddate= ? and card.mobilenumber= ? and card.name= ? and card.size= ?  " ;
+	public boolean idcardExists(int id,String orgname,String quantity,String size,String idcardname,String price,Date date,String orderstatus,String filename) {
+		String hql = "FROM Idcard as card WHERE card.id= ? and card.orgname= ?  and card.quantity= ? and card.size= ? and card.idcardname= ? and card.price= ? and card.date= ? and card.orderstatus= ? and card.filename= ?  " ;
 		System.out.println(hql);
-		int count = entityManager.createQuery(hql).setParameter(1,address).setParameter(2,bloodgroup).setParameter(3,companyname).setParameter(4 ,dob).setParameter( 5, empid ).setParameter( 6, issueddate ).setParameter(7 , mobilenumber).setParameter(8 ,name).setParameter(9,size). getResultList().size();
+		int count = entityManager.createQuery(hql).setParameter(1,id).setParameter(2,orgname).setParameter(3,quantity).setParameter(4 ,size).setParameter( 5,idcardname).setParameter( 6, date ).setParameter(7 , orderstatus).setParameter(8 ,filename). getResultList().size();
 		return count > 0 ? true : false;
 	}
 	

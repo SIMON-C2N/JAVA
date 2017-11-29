@@ -14,6 +14,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.RequestEntity;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -41,37 +42,39 @@ public class IdcardController {
  
 	List<String> files = new ArrayList<String>();
  
-	@PostMapping("/post")
+@PostMapping("/post")
 	public ResponseEntity<String> handleFileUpload(@RequestParam("file") MultipartFile file) {
-		String message = "";
-		System.out.println(file);
+
+	String message = "";
 		try {
 			storageService.store(file);
 			files.add(file.getOriginalFilename());
-			System.out.println(file.getOriginalFilename());
+			System.out.println(file.getName());
  
+			System.out.println(files);
 			message = "You successfully uploaded " + file.getOriginalFilename() + "!";
 			return ResponseEntity.status(HttpStatus.OK).body(message);
 		} catch (Exception e) {
 			message = "FAIL to upload " + file.getOriginalFilename() + "!";
 			return ResponseEntity.status(HttpStatus.EXPECTATION_FAILED).body(message);
 		}
-	}
 	
 	
-	@PostMapping("idcardsubmit")
-	public ResponseEntity<Void> createIdcard(@RequestBody Idcard idcard, UriComponentsBuilder builder) {
+	/*@PostMapping("/post")
+	public ResponseEntity<Void> createIdcard(@RequestParam("file") MultipartFile file,@RequestBody Idcard idcard, UriComponentsBuilder builder) {
        
 		
-		
+		System.out.println("method");
+		storageService.store(file);
+		files.add(file.getOriginalFilename());
 		boolean flag = idcardService.createIdcard(idcard);
        if (flag == false) {
         	return new ResponseEntity<Void>(HttpStatus.CONFLICT);
        }
-        HttpHeaders headers = new HttpHeaders();
-        headers.setLocation(builder.path("/idcard?id={id}").buildAndExpand(idcard.getId()).toUri());
+       HttpHeaders headers = new HttpHeaders();
+	        headers.setLocation(builder.path("/idcard?id={id}").buildAndExpand(idcard.getId()).toUri());
         return new ResponseEntity<Void>(headers, HttpStatus.CREATED);
-	}
-}
+	}*/
+}}
 
 

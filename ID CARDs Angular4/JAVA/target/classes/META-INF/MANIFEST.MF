@@ -1,9 +1,9 @@
 Manifest-Version: 1.0
 Implementation-Title: JAVA
 Implementation-Version: 0.0.1-SNAPSHOT
-Built-By: c2n 2
+Built-By: c2n
 Implementation-Vendor-Id: com.concretepage
-Build-Jdk: 1.8.0_31
+Build-Jdk: 1.8.0_66
 Implementation-URL: http://projects.spring.io/spring-boot/spring-boot-
  demo/
 Created-By: Maven Integration for Eclipse

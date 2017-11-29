@@ -8,7 +8,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 @Entity
-@Table(name="idusers")
+@Table(name="Profile")
 public class Profile implements Serializable { 
 	private static final long serialVersionUID = 1L;
 	@Id

@@ -131,7 +131,7 @@ export class UserComponent implements OnInit {
     this.username='';
     this.currentUser='';
     console.log("username and current user cleaning done");
-    this.router.navigate(['login'])
+    this.router.navigate(['Login'])
   }
   navigatetoHome(){
     this.router.navigate(['user']);

@@ -37,5 +37,28 @@ export class IndexComponent implements OnInit {
     this.selectedItem=menuitem;
     this.router.navigate([menuitem.menuitem])
   }
-
+  scrolltoX()
+  {
+    let x=document.querySelector("#targetted");
+    if(x)
+    {
+      x.scrollIntoView();
+    }     
+  }  
+  scrolltoY()
+  {
+    let y=document.querySelector("#targetted1");
+    if(y)
+    {
+      y.scrollIntoView();
+    }  
+  }
+  scrolltotop()
+  {
+    let top=document.querySelector("#top");
+    if(top)
+    {
+      top.scrollIntoView();
+    }
+  }
 }

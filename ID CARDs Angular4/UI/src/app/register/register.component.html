@@ -7,18 +7,13 @@
 					</div>
 	<div class="row">
 		<div class="col-md-6 col-md-offset-3">
-			<div class="panel panel-login">
-				<div class="panel-heading">
-					<div class="row">
-						
-						<div class="text-center">
-							<a href="register" class="active" id="register-form-link">Register</a>
-						</div>
-					</div>
-					<hr>
-				</div>
+			<div class="panel panel-login">				
 				<div class="panel-body">
 					<div class="row">
+							<div class="text-center">
+								<b class="registerlabel"><h3>REGISTRATION</h3></b>		
+							</div>
+							
 						<div class="col-lg-12"><br>
 							{{statusCode}}
 							<div *ngIf="statusCode; else processing">
@@ -85,8 +80,8 @@
 									</mat-select>
 								  </mat-form-field>
 								</div>
-								<div>
-									<input type="submit"  value="Register Now" class="form-control btn" 
+								<div class="col-sm-6 col-sm-offset-3">
+									<input type="submit" value="Register Now" class="form-control btn" 
 									[disabled]="!userForm.form.valid" >
 								</div>
 							</form>

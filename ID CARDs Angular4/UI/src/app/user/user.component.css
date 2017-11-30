@@ -80,26 +80,38 @@ div.bhoechie-tab-content{
 div.bhoechie-tab div.bhoechie-tab-content:not(.active){
   display: none;
 }
-/*.fullpage{
+
+
+/*real properties*/
+.fullpage{
 	background-image: url("/assets/images/greenone.jpg");
 	margin-top: -20px;
-	height: 500px;
+	height: 700px;
 }
-.menu{
+.menu{  
 	width: 100px;
-	border-radius: 30px;
-	margin-left: 92%
+  border-radius: 30px;
+  margin-left: 92%;
 }
 .tabs{
 	list-style: none;
 }
 .welcomemsg{
-	width: 180px;
-	margin-top: -50px;	
+  position: sticky;
+  color: rgb(20, 131, 109);
+  float: right;
+  margin-top: -50px;
 }
 #menu{
-	cursor: pointer;
+  color: rgb(20, 131, 109);
+  cursor: pointer;
+  margin-top: 50px;
 }
-#head{
-	position: relative;
-}*/
+.mat-menu-item
+{
+  color: rgb(20, 131, 109);
+}
+#loggehead
+{
+  z-index: -1;
+}

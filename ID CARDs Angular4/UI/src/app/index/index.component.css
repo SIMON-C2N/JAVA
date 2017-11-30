@@ -17,11 +17,11 @@ li{
     border-radius: 3px;
 }
 li:hover{
-    background-color: green;
+    background-color: rgb(20, 131, 109);
     color: white;
 }
-.carousel-inner
+#down
 {
-    
+    float: right;
 }
 

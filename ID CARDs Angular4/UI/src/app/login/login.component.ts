@@ -62,7 +62,7 @@ userValidator(){
       {
         this.loginservice.setUserLoggedIn();
         console.log("checking user login");
-       this.router.navigate (['Home']);
+       this.router.navigate (['user']);
       }     
       else if(status==200 && localStorage.getItem('role')==='deliver')
       {

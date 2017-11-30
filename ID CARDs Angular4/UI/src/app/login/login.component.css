@@ -1,8 +1,12 @@
 body {
 
-	padding-top: 90px;
-	background-image: url("/assets/images/free.jpg");
-	
+	padding-top: 110px;
+	background-image: url("/assets/images/free.jpg");	
+}
+.btn
+{
+	background-color: rgb(20, 131, 109);
+	color: white;
 }
 .header{
 	text-align:center;
@@ -13,10 +17,13 @@ body {
   
 	position: fixed;
 	top: 0;
-	width: 100%;position: fixed;
-	
+	width: 100%;position: fixed;	
 }
-
+.loginlable
+{	
+	font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+	color: rgb(20, 131, 109);
+}
 
 
 .navbar {

@@ -1,4 +1,6 @@
-#fields{
-    display: inline;
-    padding: 15px;;
+#section1 {
+    padding-top:50px;
+    height:600px;
+    color: #fff; 
+    background-color: #1E88E5;
 }

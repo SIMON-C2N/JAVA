@@ -43,6 +43,7 @@ import { IdselectionComponent } from './idselection/idselection.component';
 import { PaginatorComponent } from './paginator/paginator.component';
 import { PaginationService } from './pagination.service';
 import { IndexComponent } from './index/index.component';
+import { HeaderloggedComponent } from './header/headerlogged/headerlogged.component';
 //import { FanMenuModule } from 'ng2-fan-menu';
 
 const appRoutes: Routes = [
@@ -166,7 +167,8 @@ const appRoutes: Routes = [
    TrackdelivarablesComponent,
    IdselectionComponent,
    PaginatorComponent,
-   IndexComponent
+   IndexComponent,
+   HeaderloggedComponent
  ],
   imports: [
     HttpModule,

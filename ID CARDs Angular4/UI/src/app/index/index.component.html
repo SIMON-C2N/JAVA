@@ -1,11 +1,12 @@
-<app-header></app-header>
+<app-header id="top"></app-header>
 <div class="col-sm-12 col-lg-12 col-xs-12 index">
     <div class="menu" >
         <li *ngFor="let menuitem of menuitems" (click)="onClick(menuitem)">
           {{menuitem.menuitem}}
-        </li>
-        <li data-toggle="tar" data-target="#targetted">target</li>
+        </li>       
     </div>
+    <li (click)="scrolltoX()">target</li>
+    <li (click)="scrolltoY()">target1</li>
     <div id="myCarousel" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner">
             <div class="item active">
@@ -46,5 +47,18 @@
         <h1>hi</h1>
         <h1>hi</h1>
         <h1>hi</h1>
-      </div>  
+    </div>  
+    <div class="tar" id="targetted1">
+      <h1>hi</h1>
+      <h1>hi</h1>
+      <h1>hi</h1>
+      <h1>hi</h1>
+      <h1>hi</h1>
+      <h1>hi</h1>
+      <h1>hi</h1>
+      <h1>hi</h1>
+      <h1>hi</h1>
+      <h1>hi</h1>
+      <a (click)="scrolltotop()" id="down">GoToTop</a>
+    </div>  
 </div>

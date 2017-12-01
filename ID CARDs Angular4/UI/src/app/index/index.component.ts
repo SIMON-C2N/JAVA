@@ -10,12 +10,6 @@ const menuitem:Menu[]=[
   {
     menuitem:'Login'
   },
-  {
-    menuitem:'AboutUs'
-  },
-  {
-    menuitem:'ContactUs'
-  },
 ]
 
 @Component({
@@ -26,32 +20,30 @@ const menuitem:Menu[]=[
 export class IndexComponent implements OnInit {
   selectedItem: Menu;
   menuitems=menuitem;
-
   constructor(private router: Router) { }
-
-  ngOnInit() {
+  ngOnInit() {    
   }
 
   onClick(menuitem:Menu)
   {
-    this.selectedItem=menuitem;
+    this.selectedItem=menuitem; 
     this.router.navigate([menuitem.menuitem])
   }
-  scrolltoX()
+  scrolltoaboutus()
   {
-    let x=document.querySelector("#targetted");
-    if(x)
+    let aboutus=document.querySelector("#aboutus");
+    if(aboutus)
     {
-      x.scrollIntoView();
-    }     
+      aboutus.scrollIntoView();
+    }
   }  
-  scrolltoY()
+  scrolltocontactus()
   {
-    let y=document.querySelector("#targetted1");
-    if(y)
-    {
-      y.scrollIntoView();
-    }  
+    let contactus=document.querySelector("#contactus");    
+     if(contactus)
+     {
+       contactus.scrollIntoView();
+     }
   }
   scrolltotop()
   {

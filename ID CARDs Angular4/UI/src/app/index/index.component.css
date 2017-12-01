@@ -1,7 +1,9 @@
 .menu
 {
-    float: right;
-    margin-top: -30px;
+    float: right;    
+    position: fixed;
+    margin-top: 10px;    
+    margin-left: 1000px;
 }
 .index
 {
@@ -23,5 +25,29 @@ li:hover{
 #down
 {
     float: right;
+}
+
+#myCarousel
+{
+    position: absolute;
+    z-index: -1;
+    margin-top: 50px;
+}
+.aboutus
+{
+    background-color: rgb(192, 99, 11);
+    height: 500px;
+    position: absolute;
+    z-index: -1;
+    margin-top: 550px;
+}
+.contactus
+{
+    background-color: black;
+    color: white;
+    height: 700px;
+    position: absolute;
+    z-index: -1;
+    margin-top: 1050px;
 }
 

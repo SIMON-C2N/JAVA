@@ -7,3 +7,7 @@ span{
     border-radius: 5px;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
+h1
+{
+    cursor: pointer;
+}

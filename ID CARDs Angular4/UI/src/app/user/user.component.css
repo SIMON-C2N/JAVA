@@ -96,7 +96,12 @@ div.bhoechie-tab div.bhoechie-tab-content:not(.active){
 .tabs{
 	list-style: none;
 }
-.welcomemsg{
+li:hover
+{
+  background-color: rgb(20, 131, 109);
+}
+.welcomemsg
+{
   position: sticky;
   color: rgb(20, 131, 109);
   float: right;
@@ -111,7 +116,20 @@ div.bhoechie-tab div.bhoechie-tab-content:not(.active){
 {
   color: rgb(20, 131, 109);
 }
+.mat-menu-item:hover
+{
+  color: white;
+}
 #loggehead
 {
   z-index: -1;
+}
+#editprofile
+{
+  padding: 20px;
+}
+.btn
+{
+  background-color: rgb(20, 131, 109);
+	color: white;
 }

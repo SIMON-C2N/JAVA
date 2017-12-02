@@ -36,7 +36,10 @@ li:hover{
 .aboutus
 {
     background-color: rgb(192, 99, 11);
-    height: 500px;
+    left: 0;
+    right: 0;
+    height: 700px;
+    
     position: absolute;
     z-index: -1;
     margin-top: 550px;
@@ -46,8 +49,18 @@ li:hover{
     background-color: black;
     color: white;
     height: 700px;
+    left: 0;
+    right: 0;
     position: absolute;
     z-index: -1;
-    margin-top: 1050px;
+    margin-top: 1250px;
+}
+.aboutcontent
+{
+    margin-top: 100px;
+}
+.contactcontent
+{
+    margin-top: 100px;
 }
 

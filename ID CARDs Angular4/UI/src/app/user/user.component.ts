@@ -98,12 +98,16 @@ export class UserComponent implements OnInit {
       },
       errorCode => this.statusCode = errorCode
     );
-  }
+  }//onInIt
 
   //for nav bar
   onClick(tab: Menu) {
     this.selectedTab = tab;
     this.router.navigate([tab.name]);
+  }
+  showTemplates()
+  {
+    this.router.navigate(['idselection']);
   }
   //for editUserProfile
   editUserProfile(){
@@ -149,5 +153,4 @@ export class UserComponent implements OnInit {
     this.router.navigate(['CustomerReceipt']);
   }
   
-}//oninit
-//class
+}//class

@@ -1,5 +1,6 @@
 .header{
     background-color: wheat;
+    position: fixed;
 }
 span{
     background-color: rgb(20, 131, 109);

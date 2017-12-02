@@ -96,3 +96,8 @@ li {
 #back{
   z-index: 10;
 }
+.fullpage
+{
+  background-color: yellow;
+  margin-top: -700px;
+}

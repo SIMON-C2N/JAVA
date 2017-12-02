@@ -53,9 +53,8 @@
       <td>{{profile.username}}</td><td>{{profile.profileId}}</td>
    </tr>-->
 
-   <div class="modal fade" id="editprofile" role="dialog">
-    <div class="modal-dialog">
-    
+<div class="modal fade" id="editprofile" role="dialog">
+  <div class="modal-dialog">    
       <!-- view profile in model-->
      <div class="modal-content">
         <div class="modal-header">
@@ -98,13 +97,14 @@
         </div>
     </div>
       
-    </div>
   </div>
+</div>
 <div class="fullpage">
     <!--To wish the user when login-->
-    <div class="col-sm-2 welcomemsg"> 
-        <h4><b>Welcome, {{username | uppercase}}</b></h4>
-    </div>
+  <div class="col-sm-2 welcomemsg"> 
+    <h4><b>Welcome, {{username | uppercase}}</b></h4>
+  </div>
+  <!--navigation menu of tabs-->
   <div class="menu">
       <span [matMenuTriggerFor]="menu" id="menu">
           <h2><i class="fa fa-bars" aria-hidden="true"></i></h2>
@@ -125,5 +125,8 @@
           </ul>
         </mat-menu>
   </div>   
+  <div>
+    <span class="btn templatesbtn" (click)="showTemplates()" >Templates</span>
+  </div>
 </div>
 <app-footer></app-footer>

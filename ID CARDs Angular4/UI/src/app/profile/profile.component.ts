@@ -66,6 +66,8 @@ export class Emps{
 export class ProfileComponent implements OnInit {
   emp:Emps;
   emps:IEmps[];
+  data: Object = {};
+  stringARRAY:string[];
   i
   formno
   nofemps:number[];
@@ -101,28 +103,22 @@ export class ProfileComponent implements OnInit {
   }
   multiformController(){
     console.log("coming");
-    this.companylogo=this.logo.nativeElement;
-    for(this.i=0;this.i<=this.formno;this.i++){
+    //this.companylogo=this.logo.nativeElement;
+   
       console.log("Entered to for loop");
       let name = this.regEmpForm.get('name').value;
       let employeeid = this.regEmpForm.get('employeeid').value;
-      let issuedDate = this.regEmpForm.get('issuedDate').value;
-      let address = this.regEmpForm.get('address').value;
-      let companyName = this.regEmpForm.get('companyName').value;
-      let bloodGroup = this.regEmpForm.get('bloodGroup').value;
-      let contactNumber = this.regEmpForm.get('contactNumber').value;
-      let dob = this.regEmpForm.get('dob').value;
-      let size = this.regEmpForm.get('size').value;
-      let employeeImage = this.regEmpForm.get('employeeImage').value;
-      this.emps= Array(new Emps(name,employeeid,issuedDate,address,companyName,bloodGroup,contactNumber,dob,size,employeeImage,this.companylogo.value))
-    }   
-    const Image=this.logo.nativeElement;
-    if(Image.files&&Image.files[0]){
-      this.companylogofile=Image.files[0];
-    }
-    const imagefile:File=this.companylogofile;
-    console.log(imagefile);
-    console.log(this.emps);
+      //let issuedDate = this.regEmpForm.get('issuedDate').value;
+      //let address = this.regEmpForm.get('address').value;
+      //let companyName = this.regEmpForm.get('companyName').value;
+      //let bloodGroup = this.regEmpForm.get('bloodGroup').value;
+     // let contactNumber = this.regEmpForm.get('contactNumber').value;
+     // let dob = this.regEmpForm.get('dob').value;
+     // let size = this.regEmpForm.get('size').value;
+      //let employeeImage = this.regEmpForm.get('employeeImage').value;
+      //this.emps= Array(new Emps(name,employeeid,issuedDate,address,companyName,bloodGroup,contactNumber,dob,size,employeeImage,this.companylogo.value))    
+      this.stringARRAY=Array(name,employeeid);
+      console.log(this.stringARRAY);
     }
     
 }

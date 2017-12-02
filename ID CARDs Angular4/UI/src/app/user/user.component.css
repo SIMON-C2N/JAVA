@@ -88,12 +88,9 @@ div.bhoechie-tab div.bhoechie-tab-content:not(.active){
 	margin-top: -20px;
 	height: 700px;
 }
-.menu{  
-	width: 100px;
-  border-radius: 30px;
-  margin-left: 92%;
-}
-.tabs{
+
+.tabs
+{
 	list-style: none;
 }
 li:hover
@@ -102,15 +99,22 @@ li:hover
 }
 .welcomemsg
 {
-  position: sticky;
+  position: fixed;
+  margin-top: 20px;
   color: rgb(20, 131, 109);
-  float: right;
-  margin-top: -50px;
+  right: 0;  
 }
 #menu{
   color: rgb(20, 131, 109);
   cursor: pointer;
   margin-top: 50px;
+}
+.menu
+{
+  width: 40px;
+  margin-left: 95%;
+  margin-top: 50px;
+  position: fixed;
 }
 .mat-menu-item
 {
@@ -120,10 +124,6 @@ li:hover
 {
   color: white;
 }
-#loggehead
-{
-  z-index: -1;
-}
 #editprofile
 {
   padding: 20px;
@@ -132,4 +132,10 @@ li:hover
 {
   background-color: rgb(20, 131, 109);
 	color: white;
+}
+.templatesbtn
+{  
+  position: fixed;
+  margin-top: 30px;
+  margin-left: 990px;
 }

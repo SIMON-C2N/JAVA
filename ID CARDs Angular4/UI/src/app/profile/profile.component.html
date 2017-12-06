@@ -1,24 +1,37 @@
-<div class="container">
-    <button (click)="profilefor()">Generate</button>
-        <input  type="text"[(ngModel)]="formno"><br>
-        <div id="fields" *ngFor="let field of fields">
-              {{field.fieldName}}
+<form [formGroup]="idForm" novalidate (ngSubmit)="multiidcards()">
+    <div formArrayName="ids">
+      <div *ngFor="let id of idForm.controls.ids.controls; let i=index" class="panel panel-default">
+        <div class="panel-heading">
+          <span> {{i + 1}}</span>
+          <span class="glyphicon glyphicon-remove pull-right" *ngIf="idForm.controls.ids.controls.length > 1" (click)="removeAddress(i)"></span>
         </div>
-        <span *ngFor="let form of nofemps">
-                {{nofemps.length}}    
-        <form [formGroup]="regEmpForm" (ngSubmit)="multiformController()" #userForm="ngForm" method="post" role="form" style="display: block;" id={{nofemps.length}}>
-               <td><input type="text" formControlName="name" placeholder="Name" class="form-control" ></td> 
-               <td><input type="email"   formControlName="employeeid" placeholder="EmpID" class="form-control"></td>        
-               <td><input type="password"  formControlName="issuedDate"  placeholder="IssuesOn" class="form-control"></td>        
-               <td><input type="password"   formControlName="address" placeholder="Address" class="form-control"></td>        
-               <td><input type="text"   formControlName="companyName" placeholder="CompanyName" class="form-control"></td>
-               <td><input type="text" formControlName="bloodGroup" placeholder="BloodGroup" class="form-control" ></td>         
-               <td><input type="text" formControlName="contactNumber" placeholder="Phone" class="form-control" ></td>         
-               <td><input type="email"   formControlName="dob" placeholder="DOB" class="form-control"></td>        
-               <td><input type="password"  formControlName="size"  placeholder="size" class="form-control"></td>        
-               <td><input type="password"   formControlName="employeeImage" placeholder="EmployeePic" class="form-control"></td>        
-               <td><input type="file"   formControlName="companylogo" placeholder="CompanyLoGo" #companylogo class="form-control"></td>        
-               <input type="submit" value="Submit">
-        </form>     
-    </span>    
-</div>
+        <div class="panel-body" [formGroupName]="i">
+          <div class="form-group col-xs-6">
+            <label>name</label>
+            <input type="text" class="form-control" formControlName="name">            
+          </div>
+          <div class="form-group col-xs-6">
+            <label>role</label>
+            <input type="text" class="form-control" formControlName="role">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="margin-20">
+      <a (click)="addAddress()" style="cursor: default" class="btn btn-primary">
+        Add Another Member
+      </a>
+    </div>
+
+    <div class="margin-20">
+      <button type="submit" class="btn btn-primary pull-right" [disabled]="!idForm.valid">Submit</button>
+    </div>
+    <div class="clearfix"></div>
+
+    <div class="margin-20">
+      <div>myForm details:-</div>
+      <pre>Is myForm valid?: <br>{{idForm.valid | json}}</pre>
+      <pre>form value: <br>{{idForm.value | json}}</pre>
+    </div>
+</form>

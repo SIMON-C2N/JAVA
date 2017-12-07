@@ -1,5 +1,11 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators, FormsModule, FormArray, FormBuilder } from '@angular/forms';
+import { ProfileService } from '../profile.service';
+
+
+export interface ObjectIds{  
+  ids:Object[];
+}
 
 @Component({
   selector: 'app-profile',
@@ -7,18 +13,16 @@ import { FormControl, FormGroup, Validators, FormsModule, FormArray, FormBuilder
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
-
+  obj:ObjectIds;
   public idForm: FormGroup;
-  ids
-  constructor(private _fb: FormBuilder) {}
+  constructor(private _fb: FormBuilder, private profileservice:ProfileService) {}
   ngOnInit() {
     this.idForm = this._fb.group({
       ids: this._fb.array([
         this.initAddress(),
       ])
   });
-  
-  }
+}
  
   initAddress() {
     return this._fb.group({
@@ -38,8 +42,12 @@ export class ProfileComponent implements OnInit {
   }
 
   multiidcards(){
-    console.log(this.idForm);
-    var str=JSON.stringify(this.idForm.value);
-    console.log(str.length);
+    this.obj=this.idForm.value;
+    this.profileservice.sendUsersToServer(this.idForm.value).subscribe(
+      value=>{
+        console.log("successfully submitted"+value);
+      }
+    );
+    console.log("before sending to the service"+this.idForm.value);   
   }
 }

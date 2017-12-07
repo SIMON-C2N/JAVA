@@ -30,16 +30,7 @@ public class idcardService  implements IidcardService {
 		return null;
 	}
 
-	@Override
-	public boolean createIdcard(Idcard idcard) {
-		if (idcardDAO.idcardExists(idcard.getId(),idcard.getOrgname(),idcard.getQuantity(),idcard.getSize(),idcard.getIdcardname(),idcard.getPrice(),idcard.getDate(),idcard.getOrderstatus(),idcard.getFilename())) {
-			return false;
-	       } else {
-	    	   
-	    	   idcardDAO.createIdcard(idcard);
-	    	   return true;
-	       }
-	}
+	
 
 	@Override
 	public void updateIdcard(Idcard idcard) {
@@ -51,6 +42,12 @@ public class idcardService  implements IidcardService {
 	public void deleteIdcard(int idcardId) {
 		// TODO Auto-generated method stub
 		
+	}
+
+	@Override
+	public boolean createIdcard(Idcard idcard) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 
 	

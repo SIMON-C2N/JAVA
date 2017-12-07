@@ -13,6 +13,7 @@ export class RegisterService {
   registerUser(user:  User):Observable<number> {
     let userHeaders = new Headers({ 'Content-Type': 'application/json' });
       let options = new RequestOptions({ headers: userHeaders });
+      console.log(user);
       return this.http.post(environment._registerUrl, user, options)
              .map(success => success.status).catch(this.handleError);
   }

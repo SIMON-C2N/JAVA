@@ -35,3 +35,7 @@
       <pre>form value: <br>{{idForm.value | json}}</pre>
     </div>
 </form>
+<form method="POST" enctype="multipart/form-data">
+  <input type="file" name="file" #fileinput/><br/><br/>
+  <input type="submit" value="Submit" (click)="sendfile()"/>
+</form>

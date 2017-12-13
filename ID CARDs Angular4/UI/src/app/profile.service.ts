@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
-import { RequestOptions, Headers, URLSearchParams } from '@angular/http';
+import { RequestOptions, Headers, URLSearchParams, Http } from '@angular/http';
 import {environment } from '../environments/environment';
 import { ObjectIds } from './profile/profile.component';
 import { Observable } from 'rxjs';
@@ -20,5 +20,12 @@ export class ProfileService {
     return this.http.post('http://localhost:8080/user/sendids',idvalues);
   }
   private headers = new HttpHeaders({'Content-Type': 'application/json'});
+
+  sendfiletoserver(file:File):Observable<any>{
+    console.log("file in service"+file)
+    let fileformdata:FormData=new FormData();
+    fileformdata.append('image',file);
+    return this.http.post('http://localhost:8080/user/sendids',fileformdata)
+  }
 
 }

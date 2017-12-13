@@ -22,7 +22,7 @@ import antlr.StringUtils;
 public class StorageService implements IStorageService{
 
 	Logger log = LoggerFactory.getLogger(this.getClass().getName());
-	private final Path rootLocation = Paths.get("E://");
+	private final Path rootLocation = Paths.get("F://");
 
 	public void store(MultipartFile file) {
 		try {
